@@ -1,0 +1,62 @@
+{
+  "chapter": 3,
+  "source_file": "chapter3_shap.json",
+  "title": "The Explainable World — SHAP",
+  "status": "ready",
+  "scenes": [
+    {
+      "id": "ch3_s01_what_drives_the_model",
+      "number": 1,
+      "title": "What drives the model?",
+      "narrative_question": "Which features contribute most to the XGBoost claim-frequency prediction?",
+      "data_bindings": {
+        "top_features": "$.story_contract.global_importance",
+        "analysis_method": "$.source.explanation_method",
+        "model": "$.source.model"
+      },
+      "visual": {
+        "type": "ranked_feature_bars",
+        "source_output": "02_bar_summary.png",
+        "performance_note": "Static SVG/HTML-ready paths or compact JSON once SHAP export exists."
+      }
+    },
+    {
+      "id": "ch3_s02_direction_not_just_rank",
+      "number": 2,
+      "title": "Importance is not direction.",
+      "narrative_question": "Does a feature push the prediction up or down — and does that effect change across its range?",
+      "data_bindings": {
+        "dependence": "$.story_contract.feature_dependence",
+        "glm_comparison": "$.story_contract.glm_directional_comparison"
+      },
+      "visual": {
+        "type": "dependence_curve",
+        "source_outputs": [
+          "03_dependence_<feature>.png",
+          "06_shap_vs_glm_comparison.png"
+        ],
+        "interaction": "Scroll reveals one selected feature at a time; controls switch among exported top features."
+      }
+    },
+    {
+      "id": "ch3_s03_one_prediction_explained",
+      "number": 3,
+      "title": "One prediction. Explained.",
+      "narrative_question": "Can we decompose one XGBoost prediction into feature contributions?",
+      "data_bindings": {
+        "individual_cases": "$.story_contract.individual_case"
+      },
+      "visual": {
+        "type": "waterfall",
+        "source_output": "04_waterfall_case_<n>.png",
+        "interaction": "Case selector: three representative cases ordered by reconstructed predicted frequency."
+      },
+      "insight": "The model becomes reviewable when the prediction can be decomposed into feature-level contributions."
+    }
+  ],
+  "transition": {
+    "next_chapter": 4,
+    "question": "Does the extra model complexity actually translate into better risk segmentation?",
+    "destination": "Business proof / Lorenz & Gini"
+  }
+}

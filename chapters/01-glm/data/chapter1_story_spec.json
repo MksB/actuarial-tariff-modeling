@@ -1,0 +1,189 @@
+{
+  "version": "0.1",
+  "chapter": 1,
+  "chapter_id": "chapter1_glm",
+  "title": "The Classical World — GLM",
+  "purpose": "Translate the existing GLM model outputs into an implementable cinematic scrollytelling sequence.",
+  "source_file": "chapter1_glm.json",
+  "source_paths": {
+    "story_case": "$.story_case",
+    "policy": "$.story_case.policy",
+    "exposure": "$.story_case.exposure",
+    "features": "$.story_case.features",
+    "glm_prediction": "$.story_case.glm",
+    "driver_age_curve": "$.curves.driver_age",
+    "bonus_malus_curve": "$.curves.bonus_malus",
+    "vehicle_age_curve": "$.curves.vehicle_age",
+    "visualization_note": "$.visualization_note"
+  },
+  "scenes": [
+    {
+      "id": "ch1_s01_customer",
+      "title": "Meet the customer",
+      "purpose": "Introduce one concrete policy before explaining the model.",
+      "visual_mode": "cinematic_profile_reveal",
+      "data_bindings": {
+        "policy": "$.story_case.policy",
+        "exposure": "$.story_case.exposure",
+        "driver_age": "$.story_case.features.driver_age",
+        "bonus_malus": "$.story_case.features.bonus_malus",
+        "vehicle_age": "$.story_case.features.vehicle_age",
+        "vehicle_power": "$.story_case.features.vehicle_power",
+        "vehicle_brand": "$.story_case.features.vehicle_brand",
+        "vehicle_gas": "$.story_case.features.vehicle_gas",
+        "area": "$.story_case.features.area",
+        "density": "$.story_case.features.density",
+        "region": "$.story_case.features.region"
+      },
+      "display": {
+        "hero_value": {
+          "value_ref": "$.story_case.glm.pure_premium_eur",
+          "label": "Expected annual claim cost (pure premium)",
+          "format": "eur_2"
+        },
+        "secondary_values": [
+          {
+            "value_ref": "$.story_case.glm.frequency",
+            "label": "Expected frequency",
+            "format": "rate_4dp"
+          },
+          {
+            "value_ref": "$.story_case.glm.severity_eur",
+            "label": "Expected severity",
+            "format": "eur_0"
+          }
+        ]
+      },
+      "interaction": {
+        "type": "scroll",
+        "action": "reveal_profile_then_pure_premium"
+      },
+      "insight": "One risk profile is translated into one expected annual claim cost."
+    },
+    {
+      "id": "ch1_s02_build_price",
+      "title": "How does the GLM get to €34.57 of expected claim cost?",
+      "purpose": "Reveal the frequency and severity components of the policy-level pure premium.",
+      "visual_mode": "cinematic_formula_build",
+      "data_bindings": {
+        "frequency": "$.story_case.glm.frequency",
+        "severity": "$.story_case.glm.severity_eur",
+        "pure_premium": "$.story_case.glm.pure_premium_eur"
+      },
+      "formula": "Pure Premium = Frequency × Severity",
+      "animation_steps": [
+        {
+          "phase": 1,
+          "show": "frequency",
+          "value_ref": "$.story_case.glm.frequency"
+        },
+        {
+          "phase": 2,
+          "show": "severity",
+          "value_ref": "$.story_case.glm.severity_eur"
+        },
+        {
+          "phase": 3,
+          "show": "multiplication",
+          "value_refs": [
+            "$.story_case.glm.frequency",
+            "$.story_case.glm.severity_eur"
+          ]
+        },
+        {
+          "phase": 4,
+          "show": "pure_premium",
+          "value_ref": "$.story_case.glm.pure_premium_eur"
+        }
+      ],
+      "interaction": {
+        "type": "scroll",
+        "action": "assemble_pure_premium_from_components"
+      },
+      "insight": "The GLM output is used here as frequency and severity; their product forms the expected annual claim cost."
+    },
+    {
+      "id": "ch1_s03_alternative_scenarios",
+      "title": "Change one thing",
+      "purpose": "Turn the static model output into a journey through controlled alternative customer scenarios.",
+      "visual_mode": "cinematic_scrollytelling_curve",
+      "rule": "Vary exactly one feature while keeping every other story-case feature fixed.",
+      "scenarios": [
+        {
+          "id": "driver_age",
+          "label": "Driver age",
+          "data_ref": "$.curves.driver_age",
+          "x_field": "value",
+          "y_fields": [
+            "pure_premium_eur",
+            "frequency",
+            "severity_eur"
+          ],
+          "story_anchor": {
+            "value_ref": "$.story_case.features.driver_age",
+            "curve_value_ref": "$.curves.driver_age[23].value",
+            "expected_match": 41.0
+          },
+          "narrative_question": "What changes if the driver were younger or older?",
+          "insight": "The GLM maps driver age to changing frequency, severity, and pure premium."
+        },
+        {
+          "id": "bonus_malus",
+          "label": "Bonus-Malus",
+          "data_ref": "$.curves.bonus_malus",
+          "x_field": "value",
+          "y_fields": [
+            "pure_premium_eur",
+            "frequency",
+            "severity_eur"
+          ],
+          "story_anchor": {
+            "value_ref": "$.story_case.features.bonus_malus",
+            "curve_value_ref": "$.curves.bonus_malus[0].value",
+            "expected_match": 50.0
+          },
+          "narrative_question": "What changes if the customer's Bonus-Malus changes?",
+          "insight": "Frequency rises strongly while severity falls, yet the resulting pure premium rises across the shown range."
+        },
+        {
+          "id": "vehicle_age",
+          "label": "Vehicle age",
+          "data_ref": "$.curves.vehicle_age",
+          "x_field": "value",
+          "y_fields": [
+            "pure_premium_eur",
+            "frequency",
+            "severity_eur"
+          ],
+          "story_anchor": {
+            "value_ref": "$.story_case.features.vehicle_age",
+            "curve_value_ref": "$.curves.vehicle_age[10].value",
+            "expected_match": 10.0
+          },
+          "narrative_question": "What changes if the vehicle gets newer or older?",
+          "insight": "Frequency falls while severity rises; pure premium increases across the shown range."
+        }
+      ],
+      "interaction": {
+        "type": "scroll",
+        "action": "animate_curve_and_move_customer_marker"
+      },
+      "insight": "The tariff is experienced as a sequence of counterfactual scenarios, not as a static chart."
+    }
+  ],
+  "transition_to_chapter2": {
+    "trigger": "after_scene_ch1_s03",
+    "question": "What happens when we stop specifying the shape of these relationships in advance?",
+    "next_chapter": "xgboost"
+  },
+  "implementation_notes": {
+    "frontend_not_included": true,
+    "plot_library": "Plotly",
+    "data_loading": "static JSON fetch",
+    "format_rules": {
+      "eur_2": "2 decimal places with € suffix",
+      "eur_0": "whole euros with € suffix",
+      "rate_4dp": "4 decimal places"
+    }
+  }
+}

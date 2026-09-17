@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tariff Lab — actuarial tariff modeling scrollytelling">
+  <title>Tariff Lab / 01 — GLM</title>
+  <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" onload="window.renderMathInElement && renderMathInElement(document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false})"></script>
+</head>
+<body>
+<nav class="master-nav" aria-label="Tariff Lab chapters">
+  <a class="master-brand" href="../../">TARIFF LAB</a>
+  <div class="master-links">
+    <a data-chapter="01" href="../01-glm/">01 · GLM</a>
+    <a data-chapter="02" href="../02-xgboost/">02 · XGBOOST</a>
+    <a data-chapter="03" href="../03-shap/">03 · SHAP</a>
+    <a data-chapter="04" href="../04-business-test/">04 · BUSINESS TEST</a>
+  </div>
+</nav>
+
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">TARIFF LAB<span>/01</span></div>
+    <div class="chapter">THE CLASSICAL WORLD — GLM</div>
+    <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+  </header>
+
+  <main id="story" style="padding-top:118px">
+    <section class="hero scene-section" data-scene="ch1_s01_customer">
+      <div class="hero-grid">
+        <div class="hero-copy scene-reveal">
+          <p class="eyebrow">CHAPTER 01 · CLASSICAL PRICING</p>
+          <h1>How is a risk profile converted into an expected claim cost?</h1>
+          <p class="lede">A specific policy. A classical GLM. An expected annual claim cost.</p>
+
+          <div class="hero-signal">
+            <span class="pulse-dot"></span>
+            <span>MODEL OUTPUT · LIVE FROM JSON</span>
+          </div>
+
+          <div class="scroll-cue">
+            <span>SCROLL</span>
+            <i></i>
+          </div>
+        </div>
+
+        <aside class="hero-card scene-reveal">
+          <div class="card-topline">
+            <div>
+              <div class="card-kicker">POLICY</div>
+              <div id="policy-id" class="policy-id">—</div>
+            </div>
+            <span class="case-status">SELECTED CASE</span>
+          </div>
+
+          <div class="profile-grid">
+            <div><span>Driver age</span><strong id="driver-age">—</strong></div>
+            <div><span>Bonus-Malus</span><strong id="bonus-malus">—</strong></div>
+            <div><span>Vehicle age</span><strong id="vehicle-age">—</strong></div>
+            <div><span>Vehicle power</span><strong id="vehicle-power">—</strong></div>
+            <div><span>Brand</span><strong id="vehicle-brand">—</strong></div>
+            <div><span>Area</span><strong id="area">—</strong></div>
+          </div>
+
+          <div class="micro-profile">
+            <span>Density</span><strong id="density">—</strong>
+            <span>Region</span><strong id="region">—</strong>
+            <span>Exposure</span><strong id="exposure">—</strong>
+          </div>
+
+          <div class="hero-price">
+            <span>Expected annual claim cost (pure premium)</span>
+            <strong id="hero-price">€—</strong>
+            <em>pure premium</em>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="scrolly-scene formula-scene" data-scene="ch1_s02_build_price">
+      <div class="sticky-frame">
+        <div class="scene-index">01 / 02</div>
+
+        <div class="formula-layout">
+          <div class="formula-copy scene-reveal">
+            <p class="eyebrow">THE BUILD</p>
+            <h2 id="scene2-title">How does the GLM get to 34,57€ of expected claim cost?</h2>
+            <p class="body-copy">
+              The pure premium is not based on a single number.
+              The model breaks down the expected claim cost into two components
+            </p>
+
+            <div class="formula-readout" aria-live="polite">
+              <div class="readout-part" data-step="1">
+                <span>Frequency (F)</span>
+                <strong id="frequency-value">—</strong>
+              </div>
+              <div class="operator" data-step="3">×</div>
+              <div class="readout-part" data-step="2">
+                <span>Severity (S)</span>
+                <strong id="severity-value">—</strong>
+              </div>
+              <div class="operator" data-step="3">=</div>
+              <div class="readout-part result" data-step="4">
+                <span>Pure Premium</span>
+                <strong id="pure-premium-value">—</strong>
+              </div>
+            </div>
+
+            <p id="scene2-insight" class="insight">—</p>
+
+            <div class="step-label">
+              <span>SCROLL TO ASSEMBLE</span>
+              <strong id="formula-step-label">01 · Frequency</strong>
+            </div>
+          </div>
+
+          <div class="formula-visual" aria-hidden="true">
+            <div class="formula-canvas">
+              <div class="orb orb-frequency"><span>F</span></div>
+              <div class="orb orb-severity"><span>S</span></div>
+
+              <div class="connection connection-left"></div>
+              <div class="connection connection-right"></div>
+
+              <div class="result-core">
+                <span>PURE PREMIUM</span>
+                <strong id="stage-result">€—</strong>
+              </div>
+
+              <div class="orbit orbit-one"></div>
+              <div class="orbit orbit-two"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scene-scroll-hint">Keep scrolling</div>
+      </div>
+    </section>
+
+    <section class="scrolly-scene curve-story" data-scene="ch1_s03_alternative_scenarios">
+      <div class="sticky-frame">
+        <div class="scene-index">02 / 02</div>
+
+        <div class="curve-header">
+          <div class="scene-reveal">
+            <p class="eyebrow">THE COUNTERFACTUAL</p>
+            <h2>Change one thing.</h2>
+            <p id="curve-question" class="body-copy">
+              What happens if we change exactly one risk factor while keeping everything else fixed?
+            </p>
+          </div>
+
+          <div class="curve-controls" role="tablist" aria-label="Counterfactual scenario">
+            <button class="curve-tab active" data-curve="driver_age">Driver age</button>
+            <button class="curve-tab" data-curve="bonus_malus">Bonus-Malus</button>
+            <button class="curve-tab" data-curve="vehicle_age">Vehicle age</button>
+          </div>
+        </div>
+
+        <div class="curve-layout">
+          <div class="curve-copy">
+            <div class="scenario-header">
+              <span id="scenario-label">Driver age</span>
+              <strong id="scenario-value">41</strong>
+            </div>
+
+            <div class="scenario-price">
+              <span>Pure Premium</span>
+              <strong id="scenario-price-value">34,57€</strong>
+            </div>
+
+            <p id="scenario-insight" class="insight">—</p>
+
+            <div class="legend-row">
+              <span><i class="dot price"></i>Pure Premium</span>
+              <span><i class="dot frequency"></i>Frequency</span>
+              <span><i class="dot severity"></i>Severity</span>
+            </div>
+
+            <div class="scenario-range">
+              <span id="scenario-min">—</span>
+              <span id="scenario-max">—</span>
+            </div>
+          </div>
+
+          <div class="chart-shell">
+            <div class="chart-topline">
+              <span>MODEL RESPONSE</span>
+              <span id="chart-anchor-label">customer anchor: 41</span>
+            </div>
+            <div id="curve-chart" aria-label="GLM counterfactual curve"></div>
+            <div class="chart-footnote">
+              <span>All other customer attributes held constant.</span>
+              <span>Source: chapter1_glm.json</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scene-scroll-hint">Explore the curve</div>
+      </div>
+    </section>
+
+    <section class="transition-scene">
+      <div class="transition-inner">
+        <p class="eyebrow">END OF CHAPTER 01</p>
+        <div class="transition-count">01 <span>→</span> 02</div>
+        <h2>What happens if we no longer impose a predefined form on these relationships?</h2>
+        <!-- Hier ist die Verlinkung eingefügt: -->
+        <p class="lede">
+          <a data-chapter="02" href="../02-xgboost/">Chapter 02 · XGBoost</a>
+       </p>
+    <!--
+        
+        <p class="lede">Chapter 02 · XGBoost</p>
+    -->
+        <div class="transition-line"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Portfolio project · actuarial tariff modeling</span>
+    <span>MarksQuant GitHub Pages · Chapter 01</span>	
+  </footer>
+
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+  <script src="js/app.js" type="module"></script>
+<script>document.querySelectorAll('.master-links a[data-chapter]').forEach(a=>{if(a.dataset.chapter==='01')a.classList.add('current')});</script></body>
+</html>

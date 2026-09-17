@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Tariff Lab — Chapter 2: XGBoost">
+<title>Tariff Lab / 02 — XGBoost</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" onload="window.renderMathInElement && renderMathInElement(document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false})"></script>
+</head>
+<body>
+<nav class="master-nav" aria-label="Tariff Lab chapters">
+  <a class="master-brand" href="../../">TARIFF LAB</a>
+  <div class="master-links">
+    <a data-chapter="01" href="../01-glm/">01 · GLM</a>
+    <a data-chapter="02" href="../02-xgboost/">02 · XGBOOST</a>
+    <a data-chapter="03" href="../03-shap/">03 · SHAP</a>
+    <a data-chapter="04" href="../04-business-test/">04 · BUSINESS TEST</a>
+  </div>
+</nav>
+
+<div class="noise" aria-hidden="true"></div>
+<header class="topbar">
+  <div class="brand">TARIFF LAB<span>/02</span></div>
+  <div class="chapter">THE NON-LINEAR WORLD — XGBOOST</div>
+  <div class="progress-track"><span id="progress-bar"></span></div>
+</header>
+
+<main style="padding-top:118px">
+<section class="hero scene-section">
+  <div class="hero-grid">
+    <div class="hero-copy scene-reveal">
+      <p class="eyebrow">CHAPTER 02 · XGBOOST</p>
+      <h1>Same portfolio.<br>Different pure-premium surface.</h1>
+      <p class="lede">The dataset remains the same. What changes is the way the model links risks to one another.</p>
+      <div class="hero-signal"><span class="pulse-dot"></span><span id="policy-count">—</span></div>
+      <div class="scroll-cue"><span>SCROLL TO COMPARE</span><i></i></div>
+    </div>
+    <aside class="hero-card scene-reveal">
+      <div class="card-topline">
+        <div><div class="card-kicker">PORTFOLIO SNAPSHOT</div><div class="policy-id">GLM <span>→</span> XGB</div></div>
+        <span class="case-status">SAME 1,000 POLICIES</span>
+      </div>
+      <div class="median-stack">
+        <div class="median-line"><span>GLM median</span><strong id="glm-median">—</strong></div>
+        <div class="median-line xgb"><span>XGBoost median</span><strong id="xgb-median">—</strong></div>
+      </div>
+      <div class="hero-stats">
+        <div><span>XGB higher</span><strong id="xgb-higher">—</strong></div>
+        <div><span>Within ±10%</span><strong id="within-10">—</strong></div>
+        <div><span>Median Δ</span><strong id="median-diff">—</strong></div>
+      </div>
+      <div class="card-note">This chapter shows <em>difference;</em> not yet model superiority.</div>
+    </aside>
+  </div>
+</section>
+
+<section class="scrolly-scene surface-story">
+<div class="sticky-frame"><div class="scene-index">01 / 03</div>
+  <div class="surface-copy scene-reveal">
+    <p class="eyebrow">THE SURFACE</p><h2>One book.<br>Two pure-premium distributions.</h2>
+    <p class="body-copy">The median pure premium shifts from the GLM level to a different XGBoost level.</p>
+    <div class="surface-metrics">
+      <div class="metric-block"><span>GLM median</span><strong id="surface-glm">—</strong></div>
+      <div class="metric-arrow">→</div>
+      <div class="metric-block accent"><span>XGB median</span><strong id="surface-xgb">—</strong></div>
+    </div>
+    <div class="surface-statline"><strong id="surface-share">—</strong> For certain risk segments, XGBoost implies higher pure premiums than the GLM.</div>
+    <p class="insight">So the model change does not only affect individual outliers; it shifts the pure-premium surface of the portfolio.</p>
+  </div>
+  <div class="surface-visual" aria-hidden="true">
+    <div class="surface-grid"></div><div class="median-bar bar-glm"></div><div class="median-bar bar-xgb"></div>
+    <div class="surface-label label-glm">GLM median</div><div class="surface-label label-xgb">XGB median</div><div class="surface-diff"></div>
+  </div>
+  <div class="scene-scroll-hint">Keep scrolling</div>
+</div>
+</section>
+
+<section class="scrolly-scene scatter-story">
+<div class="sticky-frame"><div class="scene-index">02 / 03</div>
+  <div class="scatter-copy scene-reveal">
+    <p class="eyebrow">THE DISAGREEMENT</p><h2>The difference takes shape.</h2>
+    <p class="body-copy">Each point represents a policy. On the diagonal, the pure premiums implied by both models match exactly. The farther a point is from the diagonal, the greater the difference in model-implied pure premium.</p>
+    <div class="scatter-data-status" id="scatter-data-status">DATA · waiting</div>
+      <div class="scatter-metrics"><div><span>Median Δ</span><strong id="scatter-median">—</strong></div><div><span>95% range</span><strong id="scatter-range">—</strong></div></div>
+    <p class="insight">A single marker moves as you scroll through the portfolio. The cloud itself remains stationary.</p>
+  </div>
+  <div class="scatter-chart-shell">
+    <div class="chart-topline"><span>POLICY-LEVEL MODEL COMPARISON</span><span id="scatter-counter">—</span></div>
+    <div id="scatter-chart"></div>
+    <div class="chart-footnote"><span>Diagonal = exact agreement.</span><span>1,000-policy sample</span></div>
+  </div>
+  <div class="scene-scroll-hint">Move through the portfolio</div>
+</div>
+</section>
+
+<section class="scrolly-scene cases-story">
+<div class="sticky-frame"><div class="scene-index">03 / 03</div>
+  <div class="case-header">
+    <div class="scene-reveal"><p class="eyebrow">THE DECISION</p><h2>One policy.<br>Two model-implied pure premiums.</h2><p id="case-caption" class="body-copy">—</p></div>
+    <div class="case-tabs" role="tablist">
+      <button class="case-tab active" data-case="agreement_case">Near agreement</button>
+      <button class="case-tab" data-case="increase_case">XGB higher</button>
+      <button class="case-tab" data-case="decrease_case">XGB lower</button>
+    </div>
+  </div>
+  <div class="case-grid">
+    <article class="case-panel glm"><span>CLASSICAL MODEL</span><strong id="case-glm">—</strong><small>GLM pure premium</small></article>
+    <div class="case-arrow"><i></i><span>MODEL CHANGE</span></div>
+    <article class="case-panel xgb"><span>FLEXIBLE MODEL</span><strong id="case-xgb">—</strong><small>XGBoost pure premium</small></article>
+  </div>
+  <div class="case-delta">
+    <div><span>POLICY</span><strong id="case-policy">—</strong></div>
+    <div><span>DELTA</span><strong id="case-diff">—</strong></div>
+    <div><span>RATIO</span><strong id="case-ratio">—</strong></div>
+  </div>
+  <div class="case-note" id="case-note">—</div>
+  <div class="scene-scroll-hint">Switch the case</div>
+</div>
+</section>
+
+<section class="transition-scene"><div class="transition-inner">
+  <p class="eyebrow">END OF CHAPTER 02</p><div class="transition-count">02 <span>→</span> 03</div>
+  <h2>This raises <br>the real question:<br>Why do the models differ so much?</h2>
+  <!-- Hier ist die Verlinkung: -->
+   <p class="lede">
+      <a data-chapter="03" href="../03-shap/">Chapter 03 · Explainability / SHAP</a>
+   </p>
+  <!--
+  <p class="lede">Chapter 03 · Explainability / SHAP</p><div class="transition-line"></div>
+  -->
+</div></section>
+</main>
+
+<footer class="footer"><span>Portfolio project · actuarial tariff modeling</span><span>MarksQuant GitHub Pages · Chapter 02</span></footer>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+<script src="js/app.js" type="module"></script>s
+<script>document.querySelectorAll('.master-links a[data-chapter]').forEach(a=>{if(a.dataset.chapter==='02')a.classList.add('current')});</script></body>
+</html>

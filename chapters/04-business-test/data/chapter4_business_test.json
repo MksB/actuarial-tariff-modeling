@@ -1,0 +1,91 @@
+{
+  "chapter": 4,
+  "title": "Der Business-Test",
+  "metric_source": "master_comparison.csv",
+  "test_set_metrics": {
+    "frequency": {
+      "GLM": {
+        "deviance": 0.2658,
+        "gini": 0.2385,
+        "relative_deviance": 1.0
+      },
+      "LightGBM": {
+        "deviance": 0.4325,
+        "gini": 0.3073,
+        "relative_deviance": 1.627163280662152
+      },
+      "XGBoost": {
+        "deviance": 0.2674,
+        "gini": 0.3615,
+        "relative_deviance": 1.0060195635816405
+      }
+    },
+    "severity": {
+      "GLM": {
+        "deviance": 0.8162,
+        "gini": 0.091,
+        "relative_deviance": 1.0
+      },
+      "LightGBM": {
+        "deviance": 1.3292,
+        "gini": -0.065,
+        "relative_deviance": 1.628522420975251
+      },
+      "XGBoost": {
+        "deviance": 1.1245,
+        "gini": -0.0243,
+        "relative_deviance": 1.3777260475373683
+      }
+    }
+  },
+  "gini": {
+    "frequency": {
+      "GLM": 0.2385,
+      "LightGBM": 0.3073,
+      "XGBoost": 0.3615
+    },
+    "severity": {
+      "GLM": 0.091,
+      "LightGBM": -0.065,
+      "XGBoost": -0.0243
+    }
+  },
+  "deviance": {
+    "frequency": {
+      "GLM": 1.0,
+      "LightGBM": 1.627163280662152,
+      "XGBoost": 1.0060195635816405
+    },
+    "severity": {
+      "GLM": 1.0,
+      "LightGBM": 1.628522420975251,
+      "XGBoost": 1.3777260475373683
+    }
+  },
+  "deviance_raw": {
+    "frequency": {
+      "GLM": 0.2658,
+      "LightGBM": 0.4325,
+      "XGBoost": 0.2674
+    },
+    "severity": {
+      "GLM": 0.8162,
+      "LightGBM": 1.3292,
+      "XGBoost": 1.1245
+    }
+  },
+  "lift_frequency_top10": null,
+  "audit": {
+    "policies": 1000,
+    "xgb_higher_share": 0.64,
+    "xgb_within_10pct": 0.032,
+    "glm_median": 18.633668385,
+    "xgb_median": 46.43593793
+  },
+  "lorenz_point_arrays": null,
+  "data_note": "The current audited master comparison contains test-set deviance and Gini metrics. It does not contain point-level lift arrays, so no Top-10% lift value is asserted here.",
+  "decision_note": "On this test set, XGBoost has the highest frequency Gini, while the GLM has the lowest frequency and severity deviance. The ML severity Gini values are negative, indicating inverse ranking under the implemented Lorenz-Gini convention.",
+  "metric_source_file": "master_comparison.csv",
+  "metric_source_note": "Phase 5 comparison output: Poisson/Gamma test-set metrics from the uploaded actuarial_model_comparison.py implementation.",
+  "methodology_note": "The Phase 5 comparison GLM is sklearn.PoissonRegressor trained on frequency rates with exposure weights; it is not the same fitting implementation as the canonical Statsmodels/BIC GLM presented in Chapter 1."
+}

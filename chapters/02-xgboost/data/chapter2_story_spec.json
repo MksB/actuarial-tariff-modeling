@@ -1,0 +1,65 @@
+{
+  "chapter": 2,
+  "source_file": "chapter2_xgb.json",
+  "title": "The Non-Linear World — XGBoost",
+  "scenes": [
+    {
+      "id": "ch2_s01_same_book_different_surface",
+      "number": 1,
+      "title": "Same portfolio. Different pure-premium surface.",
+      "narrative_question": "Was passiert mit den Pure Premiums, wenn wir das Modell wechseln?",
+      "data_bindings": {
+        "n_policies": "$.summary.n_policies",
+        "glm_median": "$.summary.glm_median",
+        "xgb_median": "$.summary.xgb_median",
+        "difference_median": "$.summary.difference_median",
+        "xgb_higher_share": "$.summary.share_xgb_higher",
+        "within_10pct_share": "$.summary.share_within_10pct"
+      },
+      "insight": "XGBoost erzeugt auf demselben Portfolio eine andere Pure-Premium-Oberfläche. Dieses Kapitel zeigt die Abweichung – nicht die Überlegenheit."
+    },
+    {
+      "id": "ch2_s02_the_disagreement",
+      "number": 2,
+      "title": "Der Unterschied hat eine Form.",
+      "narrative_question": "Sind die Abweichungen einzelne Ausreißer – oder betrifft der Modellwechsel das Portfolio systematisch?",
+      "data_bindings": {
+        "portfolio": "$.portfolio",
+        "difference_p05": "$.summary.difference_p05",
+        "difference_median": "$.summary.difference_median",
+        "difference_p95": "$.summary.difference_p95",
+        "share_xgb_higher": "$.summary.share_xgb_higher"
+      },
+      "visual": {
+        "x": "GLM Pure Premium",
+        "y": "XGBoost Pure Premium",
+        "diagonal": "exact agreement",
+        "use_log_axes": true,
+        "performance_note": "Plotly scattergl for the portfolio cloud; scrolling only updates the marker trace."
+      },
+      "insight": "Die Abweichung ist keine reine Visualisierung: Jeder Punkt repräsentiert eine reale Policy aus dem 1.000er-Portfolio."
+    },
+    {
+      "id": "ch2_s03_one_policy_two_prices",
+      "number": 3,
+      "title": "One policy. Two model-implied pure premiums.",
+      "narrative_question": "Wie fühlt sich der Modellwechsel auf Policenebene an?",
+      "data_bindings": {
+        "agreement_case": "$.story_cases.closest_agreement",
+        "increase_case": "$.story_cases.largest_xgb_increase",
+        "decrease_case": "$.story_cases.largest_xgb_decrease"
+      },
+      "case_labels": {
+        "agreement_case": "Near agreement",
+        "increase_case": "XGB higher",
+        "decrease_case": "XGB lower"
+      },
+      "insight": "Ein Modellwechsel wird auf Policenebene greifbar, wenn dieselbe Risikozeile durch beide Modelle läuft."
+    }
+  ],
+  "transition": {
+    "next_chapter": 3,
+    "question": "Warum sind diese Unterschiede entstanden?",
+    "destination": "Explainability / SHAP"
+  }
+}

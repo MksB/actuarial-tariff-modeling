@@ -1,0 +1,113 @@
+==============================================================================
+REGULATORY EXPLAINABILITY REPORT
+==============================================================================
+
+Document type  : Phase 4 — SHAP Analysis & Model Comparison
+
+Dataset        : freMTPL (French MTPL) Claim Frequency — 1,000 observations
+
+Target         : ClaimNb (Poisson count, offset = log Exposure)
+
+Models         : (1) Poisson GLM  (2) XGBoost Poisson regression
+
+Framework      : SHAP TreeExplainer (shap package)
+
+
+------------------------------------------------------------
+1. SCOPE AND PURPOSE
+------------------------------------------------------------
+
+This report provides a structured explanation of a machine-learning claim-
+frequency model trained on the freMTPL dataset.  It is intended to support
+regulatory review under IFRS 17 / Solvency II model-change processes and to
+demonstrate that the ML model's predictions are explainable, auditable, and
+directionally consistent with actuarial priors captured in the GLM baseline.
+
+------------------------------------------------------------
+2. GLOBAL FEATURE IMPORTANCE — TOP 5 FEATURES (SHAP)
+------------------------------------------------------------
+
+  Rank   Feature                  Mean|SHAP|   Gain (norm)
+  --------------------------------------------------------
+  1      VehBrand                    0.18438       0.16276
+  2      Density                     0.12070       0.10690
+  3      BonusMalus                  0.08407       0.12513
+  4      LogDensity                  0.03135       0.08120
+  5      Region                      0.02554       0.06885
+
+SHAP and gain importance generally agree on the most influential features,
+giving confidence that the model's internal structure is consistent.
+Discrepancies (where gain ranks a feature highly but SHAP does not) can
+indicate that a feature participates in many weak splits (boosting gain)
+without having a large marginal effect on the output (low SHAP).
+
+------------------------------------------------------------
+3. GLM vs. SHAP — DIRECTIONAL AGREEMENT
+------------------------------------------------------------
+
+  Features in same direction   :   7  (64%)
+  Features in opposite direction:   2  (18%)
+  Insignificant (SHAP ≈ 0)     :   2  (18%)
+
+Features showing SAME directional effect in GLM and XGBoost:
+
+  • VehBrand                GLM coef=-0.3604  mean SHAP=-0.02960
+  • Density                 GLM coef=+0.1019  mean SHAP=+0.00409
+  • BonusMalus              GLM coef=+0.2051  mean SHAP=+0.00642
+  • LogDensity              GLM coef=+0.4164  mean SHAP=+0.00150
+  • BonusMalusCapped        GLM coef=+0.2051  mean SHAP=+0.00090
+  • VehPower                GLM coef=+0.1002  mean SHAP=+0.00124
+  • DrivAge                 GLM coef=+0.1238  mean SHAP=+0.00062
+
+⚠  Features showing OPPOSITE directional effect:
+
+  • Region                  GLM coef=-0.1866  mean SHAP=+0.00500
+  • VehAge                  GLM coef=-0.1335  mean SHAP=+0.00295
+
+Interpretation: Opposite-direction effects can arise from (a) non-linear
+interactions that the GLM cannot capture, (b) correlation between features
+causing GLM coefficient sign reversal (multicollinearity), or (c) the GLM
+aggregating over a population where a non-monotone relationship exists.  Each
+case should be investigated individually.
+
+------------------------------------------------------------
+4. INDIVIDUAL RISK ANALYSIS (WATERFALL PLOTS)
+------------------------------------------------------------
+
+Waterfall plots were generated for three representative risks: the lowest-
+risk observation (by summed absolute SHAP), the median-risk observation, and
+the highest-risk observation.  These plots decompose the model's prediction
+into additive feature contributions relative to the expected value (base
+rate).
+
+Regulatory note: waterfall plots allow an underwriter or auditor to verify
+that the direction and magnitude of individual feature contributions are
+plausible and consistent with underwriting guidelines.
+
+------------------------------------------------------------
+5. KNOWN LIMITATIONS
+------------------------------------------------------------
+
+1. SHAP TreeExplainer uses interventional feature perturbation under the
+assumption of feature independence.  Where features are correlated (e.g.,
+DrivAge and BonusMalus), SHAP values may distribute credit imperfectly.
+
+2. The dataset is a 1,000-row sample of the full freMTPL dataset.  Importance
+rankings and coefficient estimates may shift on the full dataset.
+
+3. Label-encoded categoricals are treated as ordinal by the GLM.  For a
+production GLM, one-hot encoding would be preferable; this would change
+coefficient values but not SHAP values for the XGBoost model.
+
+------------------------------------------------------------
+6. CONCLUSION
+------------------------------------------------------------
+
+The XGBoost model shows directional agreement with the Poisson GLM for
+approximately 78% of features that are material to the model.  This provides
+regulatory comfort that the ML model's risk drivers are consistent with
+actuarial expectations, while also capturing non-linear effects that the GLM
+cannot represent.  Full SHAP plots are provided in the accompanying PNG files.
+
+
+End of report.

@@ -1,0 +1,633 @@
+{
+  "chapter": 1,
+  "title": "The Classical World — GLM",
+  "story_case": {
+    "policy": "2097444",
+    "exposure": 1.0,
+    "features": {
+      "driver_age": 41,
+      "bonus_malus": 50,
+      "vehicle_age": 10,
+      "vehicle_power": 4,
+      "vehicle_brand": "B1",
+      "vehicle_gas": "Regular",
+      "area": "D",
+      "density": 1323.0,
+      "region": "Rhone-Alpes"
+    },
+    "glm": {
+      "frequency": 0.03962845186324174,
+      "severity_eur": 872.3610566943904,
+      "pure_premium_eur": 34.57031814258035
+    }
+  },
+  "curves": {
+    "driver_age": [
+      {
+        "value": 18.0,
+        "frequency": 0.021541066813860903,
+        "severity_eur": 498.7728549848579,
+        "pure_premium_eur": 10.744099394168979
+      },
+      {
+        "value": 19.0,
+        "frequency": 0.02211961879489458,
+        "severity_eur": 511.0448863548799,
+        "pure_premium_eur": 11.304118073250168
+      },
+      {
+        "value": 20.0,
+        "frequency": 0.0227137095789806,
+        "severity_eur": 523.6188642972578,
+        "pure_premium_eur": 11.893326813723569
+      },
+      {
+        "value": 21.0,
+        "frequency": 0.023323756508740228,
+        "severity_eur": 536.5022180410905,
+        "pure_premium_eur": 12.513247099989453
+      },
+      {
+        "value": 22.0,
+        "frequency": 0.023950188135821754,
+        "severity_eur": 549.7025596075667,
+        "pure_premium_eur": 13.165479721343996
+      },
+      {
+        "value": 23.0,
+        "frequency": 0.024593444521953604,
+        "severity_eur": 563.2276883074642,
+        "pure_premium_eur": 13.851708905617796
+      },
+      {
+        "value": 24.0,
+        "frequency": 0.025253977548083142,
+        "severity_eur": 577.0855953493065,
+        "pure_premium_eur": 14.573706668273578
+      },
+      {
+        "value": 25.0,
+        "frequency": 0.025932251231818342,
+        "severity_eur": 591.2844685609001,
+        "pure_premium_eur": 15.333337388193456
+      },
+      {
+        "value": 26.0,
+        "frequency": 0.02662874205339535,
+        "severity_eur": 605.8326972270455,
+        "pure_premium_eur": 16.13256262197176
+      },
+      {
+        "value": 27.0,
+        "frequency": 0.027343939290400975,
+        "severity_eur": 620.7388770462768,
+        "pure_premium_eur": 16.973446169145067
+      },
+      {
+        "value": 28.0,
+        "frequency": 0.028078345361485,
+        "severity_eur": 636.0118152095524,
+        "pure_premium_eur": 17.85815940143879
+      },
+      {
+        "value": 29.0,
+        "frequency": 0.028832476179304185,
+        "severity_eur": 651.6605356039156,
+        "pure_premium_eur": 18.788986869792502
+      },
+      {
+        "value": 30.0,
+        "frequency": 0.029606861512945552,
+        "severity_eur": 667.6942841441793,
+        "pure_premium_eur": 19.768332203642032
+      },
+      {
+        "value": 31.0,
+        "frequency": 0.03040204536008365,
+        "severity_eur": 684.1225342357977,
+        "pure_premium_eur": 20.798724317692102
+      },
+      {
+        "value": 32.0,
+        "frequency": 0.031218586329133245,
+        "severity_eur": 700.9549923721484,
+        "pure_premium_eur": 21.882823942206848
+      },
+      {
+        "value": 33.0,
+        "frequency": 0.03205705803166605,
+        "severity_eur": 718.2016038695318,
+        "pure_premium_eur": 23.023430493681214
+      },
+      {
+        "value": 34.0,
+        "frequency": 0.032918049485366835,
+        "severity_eur": 735.8725587432781,
+        "pure_premium_eur": 24.223489303634743
+      },
+      {
+        "value": 35.0,
+        "frequency": 0.03380216552781227,
+        "severity_eur": 753.9782977284322,
+        "pure_premium_eur": 25.486099224194586
+      },
+      {
+        "value": 36.0,
+        "frequency": 0.034710027241363066,
+        "severity_eur": 772.5295184485734,
+        "pure_premium_eur": 26.814520630107076
+      },
+      {
+        "value": 37.0,
+        "frequency": 0.03564227238946788,
+        "severity_eur": 791.5371817364177,
+        "pure_premium_eur": 28.21218383784114
+      },
+      {
+        "value": 38.0,
+        "frequency": 0.03659955586468554,
+        "severity_eur": 811.012518109932,
+        "pure_premium_eur": 29.682697963523747
+      },
+      {
+        "value": 39.0,
+        "frequency": 0.037582550148740276,
+        "severity_eur": 830.9670344077923,
+        "pure_premium_eur": 31.22986024258084
+      },
+      {
+        "value": 40.0,
+        "frequency": 0.03859194578493319,
+        "severity_eur": 851.4125205881022,
+        "pure_premium_eur": 32.857665835149355
+      },
+      {
+        "value": 41.0,
+        "frequency": 0.03962845186324174,
+        "severity_eur": 872.3610566943904,
+        "pure_premium_eur": 34.57031814258035
+      },
+      {
+        "value": 42.0,
+        "frequency": 0.04069279651844811,
+        "severity_eur": 893.8250199930028,
+        "pure_premium_eur": 36.37223966167307
+      },
+      {
+        "value": 43.0,
+        "frequency": 0.04178572744164637,
+        "severity_eur": 915.8170922861066,
+        "pure_premium_eur": 38.268083404668346
+      },
+      {
+        "value": 44.0,
+        "frequency": 0.04290801240548771,
+        "severity_eur": 938.3502674046256,
+        "pure_premium_eur": 40.26274491449038
+      },
+      {
+        "value": 45.0,
+        "frequency": 0.04406043980353275,
+        "severity_eur": 961.4378588855367,
+        "pure_premium_eur": 42.3613749062636
+      },
+      {
+        "value": 46.0,
+        "frequency": 0.04524381920408992,
+        "severity_eur": 985.0935078380611,
+        "pure_premium_eur": 44.569392567747975
+      },
+      {
+        "value": 47.0,
+        "frequency": 0.04645898191892875,
+        "severity_eur": 1009.3311910033985,
+        "pure_premium_eur": 46.892499553037716
+      },
+      {
+        "value": 48.0,
+        "frequency": 0.04770678158726775,
+        "severity_eur": 1034.1652290127674,
+        "pure_premium_eur": 49.33669470565883
+      },
+      {
+        "value": 49.0,
+        "frequency": 0.0489880947754472,
+        "severity_eur": 1059.6102948486298,
+        "pure_premium_eur": 51.90828954908423
+      },
+      {
+        "value": 50.0,
+        "frequency": 0.05030382159270787,
+        "severity_eur": 1085.6814225140988,
+        "pure_premium_eur": 54.61392458466652
+      },
+      {
+        "value": 51.0,
+        "frequency": 0.05165488632350842,
+        "severity_eur": 1112.3940159156537,
+        "pure_premium_eur": 57.460586439074106
+      },
+      {
+        "value": 52.0,
+        "frequency": 0.053042238076825725,
+        "severity_eur": 1139.7638579644079,
+        "pure_premium_eur": 60.4556259055095
+      },
+      {
+        "value": 53.0,
+        "frequency": 0.05446685145289403,
+        "severity_eur": 1167.8071199013093,
+        "pure_premium_eur": 63.60677692529662
+      },
+      {
+        "value": 54.0,
+        "frequency": 0.05592972722785157,
+        "severity_eur": 1196.5403708517827,
+        "pure_premium_eur": 66.92217655885256
+      },
+      {
+        "value": 55.0,
+        "frequency": 0.05743189305677538,
+        "severity_eur": 1225.9805876154571,
+        "pure_premium_eur": 70.41038599761357
+      },
+      {
+        "value": 56.0,
+        "frequency": 0.058974404195598414,
+        "severity_eur": 1256.1451646967655,
+        "pure_premium_eur": 74.08041267117359
+      },
+      {
+        "value": 57.0,
+        "frequency": 0.060558344242415844,
+        "severity_eur": 1287.0519245823414,
+        "pure_premium_eur": 77.94173350672126
+      },
+      {
+        "value": 58.0,
+        "frequency": 0.06218482589870153,
+        "severity_eur": 1318.7191282712856,
+        "pure_premium_eur": 82.00431940083735
+      },
+      {
+        "value": 59.0,
+        "frequency": 0.06385499175096924,
+        "severity_eur": 1351.1654860645233,
+        "pure_premium_eur": 86.27866096684448
+      },
+      {
+        "value": 60.0,
+        "frequency": 0.06557001507342794,
+        "severity_eur": 1384.4101686196282,
+        "pure_premium_eur": 90.77579562419594
+      },
+      {
+        "value": 61.0,
+        "frequency": 0.06733110065219461,
+        "severity_eur": 1418.4728182776441,
+        "pure_premium_eur": 95.50733609985421
+      },
+      {
+        "value": 62.0,
+        "frequency": 0.06913948563164415,
+        "severity_eur": 1453.3735606685975,
+        "pure_premium_eur": 100.485500415258
+      },
+      {
+        "value": 63.0,
+        "frequency": 0.07099644038349043,
+        "severity_eur": 1489.133016602556,
+        "pure_premium_eur": 105.72314343631062
+      },
+      {
+        "value": 64.0,
+        "frequency": 0.07290326939920924,
+        "severity_eur": 1525.772314253261,
+        "pure_premium_eur": 111.23379006786043
+      },
+      {
+        "value": 65.0,
+        "frequency": 0.0748613122064301,
+        "severity_eur": 1563.3131016415314,
+        "pure_premium_eur": 117.03167017838926
+      },
+      {
+        "value": 66.0,
+        "frequency": 0.07687194430994047,
+        "severity_eur": 1601.7775594258144,
+        "pure_premium_eur": 123.13175534509357
+      },
+      {
+        "value": 67.0,
+        "frequency": 0.07893657815796368,
+        "severity_eur": 1641.188414007441,
+        "pure_premium_eur": 129.5497975142428
+      },
+      {
+        "value": 68.0,
+        "frequency": 0.0810566641343891,
+        "severity_eur": 1681.5689509583292,
+        "pure_premium_eur": 136.3023696766463
+      },
+      {
+        "value": 69.0,
+        "frequency": 0.08323369157765187,
+        "severity_eur": 1722.9430287790683,
+        "pure_premium_eur": 143.40690866326233
+      },
+      {
+        "value": 70.0,
+        "frequency": 0.08546918982697768,
+        "severity_eur": 1765.335092995513,
+        "pure_premium_eur": 150.88176017145878
+      },
+      {
+        "value": 71.0,
+        "frequency": 0.08776472929672775,
+        "severity_eur": 1808.7701906022169,
+        "pure_premium_eur": 158.74622613819423
+      },
+      {
+        "value": 72.0,
+        "frequency": 0.09012192257959861,
+        "severity_eur": 1853.2739848612391,
+        "pure_premium_eur": 167.02061458244881
+      },
+      {
+        "value": 73.0,
+        "frequency": 0.0925424255794519,
+        "severity_eur": 1898.8727704650653,
+        "pure_premium_eur": 175.72629204561096
+      },
+      {
+        "value": 74.0,
+        "frequency": 0.09502793867456945,
+        "severity_eur": 1945.5934890726076,
+        "pure_premium_eur": 184.88573876523336
+      },
+      {
+        "value": 75.0,
+        "frequency": 0.0975802079121516,
+        "severity_eur": 1993.4637452274549,
+        "pure_premium_eur": 194.52260672463146
+      }
+    ],
+    "bonus_malus": [
+      {
+        "value": 50.0,
+        "frequency": 0.03962845186324174,
+        "severity_eur": 872.3610566943904,
+        "pure_premium_eur": 34.57031814258035
+      },
+      {
+        "value": 55.0,
+        "frequency": 0.04679777631081016,
+        "severity_eur": 823.5302325195271,
+        "pure_premium_eur": 38.53938360663831
+      },
+      {
+        "value": 60.0,
+        "frequency": 0.05526412879298061,
+        "severity_eur": 777.4327369031764,
+        "pure_premium_eur": 42.96414290009655
+      },
+      {
+        "value": 65.0,
+        "frequency": 0.06526215927361603,
+        "severity_eur": 733.9155704820251,
+        "pure_premium_eur": 47.8969148541847
+      },
+      {
+        "value": 70.0,
+        "frequency": 0.07706896907774666,
+        "severity_eur": 692.8342981047364,
+        "pure_premium_eur": 53.39602509663624
+      },
+      {
+        "value": 75.0,
+        "frequency": 0.09101179091859925,
+        "severity_eur": 654.0525694461189,
+        "pure_premium_eur": 59.52649570020279
+      },
+      {
+        "value": 80.0,
+        "frequency": 0.10747705834568569,
+        "severity_eur": 617.441666455146,
+        "pure_premium_eur": 66.36081401065712
+      },
+      {
+        "value": 85.0,
+        "frequency": 0.12692111597906486,
+        "severity_eur": 582.8800761347889,
+        "pure_premium_eur": 73.97978974498969
+      },
+      {
+        "value": 90.0,
+        "frequency": 0.1498828673702517,
+        "severity_eur": 550.2530872356964,
+        "pure_premium_eur": 82.47351049421941
+      },
+      {
+        "value": 95.0,
+        "frequency": 0.17699871103271717,
+        "severity_eur": 519.4524095251431,
+        "pure_premium_eur": 91.94240692878947
+      },
+      {
+        "value": 100.0,
+        "frequency": 0.20902017860289018,
+        "severity_eur": 490.37581436757523,
+        "pure_premium_eur": 102.4984403016483
+      },
+      {
+        "value": 105.0,
+        "frequency": 0.24683476398372392,
+        "severity_eur": 462.9267954238317,
+        "pure_premium_eur": 114.26642629018315
+      },
+      {
+        "value": 110.0,
+        "frequency": 0.29149052076285176,
+        "severity_eur": 437.01424834289014,
+        "pure_premium_eur": 127.38551083025527
+      },
+      {
+        "value": 115.0,
+        "frequency": 0.34422510963731623,
+        "severity_eur": 412.55216838301226,
+        "pure_premium_eur": 142.01081539275495
+      },
+      {
+        "value": 120.0,
+        "frequency": 0.40650010091142263,
+        "severity_eur": 389.4593649586997,
+        "pure_premium_eur": 158.31527115661
+      },
+      {
+        "value": 125.0,
+        "frequency": 0.4800414827817186,
+        "severity_eur": 367.65919216600906,
+        "pure_premium_eur": 176.4916637656998
+      },
+      {
+        "value": 130.0,
+        "frequency": 0.5668874981201646,
+        "severity_eur": 347.0792943918469,
+        "pure_premium_eur": 196.75491284710614
+      },
+      {
+        "value": 135.0,
+        "frequency": 0.6694451355802246,
+        "severity_eur": 327.65136616290374,
+        "pure_premium_eur": 219.34461324397088
+      },
+      {
+        "value": 140.0,
+        "frequency": 0.7905568407102678,
+        "severity_eur": 309.31092543715584,
+        "pure_premium_eur": 244.52786801076712
+      },
+      {
+        "value": 145.0,
+        "frequency": 0.9335792960122336,
+        "severity_eur": 291.99709958548556,
+        "pure_premium_eur": 272.60244666863167
+      },
+      {
+        "value": 150.0,
+        "frequency": 1.1024764533814457,
+        "severity_eur": 275.65242335308034,
+        "pure_premium_eur": 303.9003060643048
+      }
+    ],
+    "vehicle_age": [
+      {
+        "value": 0.0,
+        "frequency": 0.053248727931391245,
+        "severity_eur": 406.06684612830736,
+        "pure_premium_eur": 21.62254301144435
+      },
+      {
+        "value": 1.0,
+        "frequency": 0.05169862876747216,
+        "severity_eur": 438.336268413706,
+        "pure_premium_eur": 22.66138401603922
+      },
+      {
+        "value": 2.0,
+        "frequency": 0.05019365382550779,
+        "severity_eur": 473.17008526754074,
+        "pure_premium_eur": 23.750135460504943
+      },
+      {
+        "value": 3.0,
+        "frequency": 0.04873248951508121,
+        "severity_eur": 510.77208464251987,
+        "pure_premium_eur": 24.891195259437772
+      },
+      {
+        "value": 4.0,
+        "frequency": 0.047313860485100376,
+        "severity_eur": 551.3622491636467,
+        "pure_premium_eur": 26.08707653367993
+      },
+      {
+        "value": 5.0,
+        "frequency": 0.04593652851063076,
+        "severity_eur": 595.1780430905097,
+        "pure_premium_eur": 27.340413145328622
+      },
+      {
+        "value": 6.0,
+        "frequency": 0.044599291412132945,
+        "severity_eur": 642.4758015522193,
+        "pure_premium_eur": 28.653965498671123
+      },
+      {
+        "value": 7.0,
+        "frequency": 0.04330098200616166,
+        "severity_eur": 693.5322301824149,
+        "pure_premium_eur": 30.030626619821916
+      },
+      {
+        "value": 8.0,
+        "frequency": 0.042040467086610744,
+        "severity_eur": 748.6460239276433,
+        "pure_premium_eur": 31.47342852845209
+      },
+      {
+        "value": 9.0,
+        "frequency": 0.04081664643561438,
+        "severity_eur": 808.1396144996063,
+        "pure_premium_eur": 32.98554891564414
+      },
+      {
+        "value": 10.0,
+        "frequency": 0.03962845186324174,
+        "severity_eur": 872.3610566943904,
+        "pure_premium_eur": 34.57031814258035
+      },
+      {
+        "value": 11.0,
+        "frequency": 0.03847484627514644,
+        "severity_eur": 941.6860646141776,
+        "pure_premium_eur": 36.2312265754781
+      },
+      {
+        "value": 12.0,
+        "frequency": 0.03735482276735742,
+        "severity_eur": 1016.5202097039452,
+        "pure_premium_eur": 37.97193227292787
+      },
+      {
+        "value": 13.0,
+        "frequency": 0.03626740374742078,
+        "severity_eur": 1097.3012934622932,
+        "pure_premium_eur": 39.79626904256404
+      },
+      {
+        "value": 14.0,
+        "frequency": 0.03521164008112574,
+        "severity_eur": 1184.5019087074502,
+        "pure_premium_eur": 41.70825488481319
+      },
+      {
+        "value": 15.0,
+        "frequency": 0.03418661026406985,
+        "severity_eur": 1278.6322043826217,
+        "pure_premium_eur": 43.71210084231719
+      },
+      {
+        "value": 16.0,
+        "frequency": 0.03319141961734039,
+        "severity_eur": 1380.242870075569,
+        "pure_premium_eur": 45.81222027452044
+      },
+      {
+        "value": 17.0,
+        "frequency": 0.03222519950660989,
+        "severity_eur": 1489.9283577127592,
+        "pure_premium_eur": 48.013238577849286
+      },
+      {
+        "value": 18.0,
+        "frequency": 0.03128710658396424,
+        "severity_eur": 1608.3303592759014,
+        "pure_premium_eur": 50.320003372890625
+      },
+      {
+        "value": 19.0,
+        "frequency": 0.030376322051801557,
+        "severity_eur": 1736.1415608865395,
+        "pure_premium_eur": 52.73759518100697
+      },
+      {
+        "value": 20.0,
+        "frequency": 0.029492050948159355,
+        "severity_eur": 1874.1096952211935,
+        "pure_premium_eur": 55.27133861390284
+      }
+    ]
+  },
+  "visualization_note": "Each curve varies one customer feature while keeping all other features fixed at the selected story customer's values."
+}

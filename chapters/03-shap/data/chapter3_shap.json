@@ -1,0 +1,5255 @@
+{
+  "chapter": 3,
+  "title": "The Explainable World — SHAP",
+  "status": "ready",
+  "source": {
+    "analysis_code": "Python_R_Code_tarifmodellierung-glm-vs-ml.py",
+    "phase": "Phase 4",
+    "dataset_description": "freMTPL claim frequency — 1,000 observations",
+    "model": "XGBoost Poisson regression",
+    "explanation_method": "SHAP TreeExplainer",
+    "documented_outputs": [
+      "01_beeswarm_summary.png",
+      "02_bar_summary.png",
+      "03_dependence_<feature>.png",
+      "04_waterfall_case_<n>.png",
+      "05_gain_vs_shap_importance.png",
+      "06_shap_vs_glm_comparison.png",
+      "regulatory_report.txt"
+    ],
+    "output_space": "log_frequency_rate",
+    "note": "Actual Phase 4 SHAP results are embedded in this contract; no synthetic values are used."
+  },
+  "story_contract": {
+    "global_importance": {
+      "top_n": 5,
+      "values": [
+        {
+          "feature": "VehBrand",
+          "mean_abs_shap": 0.18438395857810974
+        },
+        {
+          "feature": "Density",
+          "mean_abs_shap": 0.12069760262966156
+        },
+        {
+          "feature": "BonusMalus",
+          "mean_abs_shap": 0.08407051116228104
+        },
+        {
+          "feature": "LogDensity",
+          "mean_abs_shap": 0.03135436773300171
+        },
+        {
+          "feature": "Region",
+          "mean_abs_shap": 0.025544747710227966
+        }
+      ]
+    },
+    "feature_dependence": {
+      "top_features": [
+        "VehBrand",
+        "Density",
+        "BonusMalus",
+        "LogDensity",
+        "Region"
+      ],
+      "rows": [
+        {
+          "feature": "VehBrand",
+          "points": [
+            {
+              "policy": 2283094,
+              "feature_value": "B12",
+              "shap_value": -0.01261210534721613
+            },
+            {
+              "policy": 3246487,
+              "feature_value": "B3",
+              "shap_value": -0.19346235692501068
+            },
+            {
+              "policy": 3248686,
+              "feature_value": "B2",
+              "shap_value": -0.21723829209804535
+            },
+            {
+              "policy": 3152884,
+              "feature_value": "B11",
+              "shap_value": 0.2568299174308777
+            },
+            {
+              "policy": 2158290,
+              "feature_value": "B2",
+              "shap_value": -0.18477942049503326
+            },
+            {
+              "policy": 3165886,
+              "feature_value": "B11",
+              "shap_value": 0.24887140095233917
+            },
+            {
+              "policy": 3117949,
+              "feature_value": "B3",
+              "shap_value": -0.21073739230632782
+            },
+            {
+              "policy": 2279272,
+              "feature_value": "B5",
+              "shap_value": -0.22658614814281464
+            },
+            {
+              "policy": 4160907,
+              "feature_value": "B2",
+              "shap_value": -0.21105287969112396
+            },
+            {
+              "policy": 1011845,
+              "feature_value": "B12",
+              "shap_value": 0.00028014928102493286
+            },
+            {
+              "policy": 4129167,
+              "feature_value": "B1",
+              "shap_value": 0.287705659866333
+            },
+            {
+              "policy": 104258,
+              "feature_value": "B1",
+              "shap_value": 0.24925144016742706
+            },
+            {
+              "policy": 3128875,
+              "feature_value": "B1",
+              "shap_value": 0.252372145652771
+            },
+            {
+              "policy": 6055645,
+              "feature_value": "B12",
+              "shap_value": -0.010117962956428528
+            },
+            {
+              "policy": 5071053,
+              "feature_value": "B12",
+              "shap_value": -0.002093404531478882
+            },
+            {
+              "policy": 4185488,
+              "feature_value": "B2",
+              "shap_value": -0.21862630546092987
+            },
+            {
+              "policy": 1185950,
+              "feature_value": "B11",
+              "shap_value": 0.2365374118089676
+            },
+            {
+              "policy": 4175828,
+              "feature_value": "B1",
+              "shap_value": 0.2567472755908966
+            },
+            {
+              "policy": 4035473,
+              "feature_value": "B12",
+              "shap_value": -0.009876511991024017
+            },
+            {
+              "policy": 2035362,
+              "feature_value": "B12",
+              "shap_value": 4.1991472244262695e-05
+            },
+            {
+              "policy": 3030652,
+              "feature_value": "B12",
+              "shap_value": -0.0008652806282043457
+            },
+            {
+              "policy": 1074278,
+              "feature_value": "B3",
+              "shap_value": -0.2084265798330307
+            },
+            {
+              "policy": 2103932,
+              "feature_value": "B1",
+              "shap_value": 0.28329044580459595
+            },
+            {
+              "policy": 2288842,
+              "feature_value": "B2",
+              "shap_value": -0.20036090910434723
+            },
+            {
+              "policy": 1107856,
+              "feature_value": "B1",
+              "shap_value": 0.28222721815109253
+            },
+            {
+              "policy": 1135562,
+              "feature_value": "B2",
+              "shap_value": -0.20156006515026093
+            },
+            {
+              "policy": 149181,
+              "feature_value": "B1",
+              "shap_value": 0.3116214871406555
+            },
+            {
+              "policy": 6090494,
+              "feature_value": "B12",
+              "shap_value": -0.0012941062450408936
+            },
+            {
+              "policy": 4186218,
+              "feature_value": "B2",
+              "shap_value": -0.1924269050359726
+            },
+            {
+              "policy": 5100713,
+              "feature_value": "B12",
+              "shap_value": 0.0014552175998687744
+            },
+            {
+              "policy": 2080089,
+              "feature_value": "B6",
+              "shap_value": -0.20072664320468903
+            },
+            {
+              "policy": 1016010,
+              "feature_value": "B12",
+              "shap_value": -0.002671562135219574
+            },
+            {
+              "policy": 3109714,
+              "feature_value": "B1",
+              "shap_value": 0.27682867646217346
+            },
+            {
+              "policy": 2272594,
+              "feature_value": "B2",
+              "shap_value": -0.22069774568080902
+            },
+            {
+              "policy": 2103324,
+              "feature_value": "B4",
+              "shap_value": -0.22101463377475739
+            },
+            {
+              "policy": 1099329,
+              "feature_value": "B2",
+              "shap_value": -0.1966145783662796
+            },
+            {
+              "policy": 3172056,
+              "feature_value": "B13",
+              "shap_value": -0.21105287969112396
+            },
+            {
+              "policy": 3064322,
+              "feature_value": "B2",
+              "shap_value": -0.2018612176179886
+            },
+            {
+              "policy": 4185677,
+              "feature_value": "B1",
+              "shap_value": 0.2957819104194641
+            },
+            {
+              "policy": 69985,
+              "feature_value": "B2",
+              "shap_value": -0.20582766830921173
+            },
+            {
+              "policy": 2053379,
+              "feature_value": "B5",
+              "shap_value": -0.2157449871301651
+            },
+            {
+              "policy": 144013,
+              "feature_value": "B2",
+              "shap_value": -0.2088521271944046
+            },
+            {
+              "policy": 2020015,
+              "feature_value": "B12",
+              "shap_value": -0.008932024240493774
+            },
+            {
+              "policy": 6057203,
+              "feature_value": "B12",
+              "shap_value": 0.0027907341718673706
+            },
+            {
+              "policy": 1198196,
+              "feature_value": "B3",
+              "shap_value": -0.19129233062267303
+            },
+            {
+              "policy": 1182577,
+              "feature_value": "B10",
+              "shap_value": 0.2689840793609619
+            },
+            {
+              "policy": 5038775,
+              "feature_value": "B12",
+              "shap_value": 0.0014552175998687744
+            },
+            {
+              "policy": 3088825,
+              "feature_value": "B6",
+              "shap_value": -0.1924269050359726
+            },
+            {
+              "policy": 2212594,
+              "feature_value": "B2",
+              "shap_value": -0.23230980336666107
+            },
+            {
+              "policy": 4147219,
+              "feature_value": "B3",
+              "shap_value": -0.21712099015712738
+            },
+            {
+              "policy": 3045232,
+              "feature_value": "B12",
+              "shap_value": -0.008972525596618652
+            },
+            {
+              "policy": 4173594,
+              "feature_value": "B2",
+              "shap_value": -0.18906565010547638
+            },
+            {
+              "policy": 1160836,
+              "feature_value": "B13",
+              "shap_value": -0.21016092598438263
+            },
+            {
+              "policy": 3061835,
+              "feature_value": "B2",
+              "shap_value": -0.21279267966747284
+            },
+            {
+              "policy": 26667,
+              "feature_value": "B1",
+              "shap_value": 0.30253416299819946
+            },
+            {
+              "policy": 32457,
+              "feature_value": "B1",
+              "shap_value": 0.29864704608917236
+            },
+            {
+              "policy": 3106087,
+              "feature_value": "B1",
+              "shap_value": 0.29872915148735046
+            },
+            {
+              "policy": 18004,
+              "feature_value": "B1",
+              "shap_value": 0.30457603931427
+            },
+            {
+              "policy": 1119718,
+              "feature_value": "B4",
+              "shap_value": -0.19881229102611542
+            },
+            {
+              "policy": 4134168,
+              "feature_value": "B2",
+              "shap_value": -0.19769300520420074
+            },
+            {
+              "policy": 1194335,
+              "feature_value": "B1",
+              "shap_value": 0.2707337439060211
+            },
+            {
+              "policy": 60321,
+              "feature_value": "B1",
+              "shap_value": 0.3056924641132355
+            },
+            {
+              "policy": 3026561,
+              "feature_value": "B2",
+              "shap_value": -0.2204563170671463
+            },
+            {
+              "policy": 1107555,
+              "feature_value": "B1",
+              "shap_value": 0.26342862844467163
+            },
+            {
+              "policy": 3093270,
+              "feature_value": "B1",
+              "shap_value": 0.27837952971458435
+            },
+            {
+              "policy": 3175262,
+              "feature_value": "B4",
+              "shap_value": -0.2179207056760788
+            },
+            {
+              "policy": 3154723,
+              "feature_value": "B3",
+              "shap_value": -0.20648671686649323
+            },
+            {
+              "policy": 4168521,
+              "feature_value": "B5",
+              "shap_value": -0.2132619172334671
+            },
+            {
+              "policy": 96633,
+              "feature_value": "B2",
+              "shap_value": -0.19020022451877594
+            },
+            {
+              "policy": 3027168,
+              "feature_value": "B12",
+              "shap_value": 0.0014147162437438965
+            },
+            {
+              "policy": 154927,
+              "feature_value": "B3",
+              "shap_value": -0.2135634571313858
+            },
+            {
+              "policy": 2270991,
+              "feature_value": "B2",
+              "shap_value": -0.22136147320270538
+            },
+            {
+              "policy": 3074794,
+              "feature_value": "B1",
+              "shap_value": 0.290863960981369
+            },
+            {
+              "policy": 3248730,
+              "feature_value": "B13",
+              "shap_value": -0.21459804475307465
+            },
+            {
+              "policy": 1192463,
+              "feature_value": "B2",
+              "shap_value": -0.23126639425754547
+            },
+            {
+              "policy": 1191611,
+              "feature_value": "B1",
+              "shap_value": 0.31476396322250366
+            },
+            {
+              "policy": 3147259,
+              "feature_value": "B2",
+              "shap_value": -0.19370494782924652
+            },
+            {
+              "policy": 40447,
+              "feature_value": "B3",
+              "shap_value": -0.232432022690773
+            },
+            {
+              "policy": 3074107,
+              "feature_value": "B1",
+              "shap_value": 0.27122020721435547
+            },
+            {
+              "policy": 2008595,
+              "feature_value": "B12",
+              "shap_value": -0.0032430514693260193
+            },
+            {
+              "policy": 3166020,
+              "feature_value": "B1",
+              "shap_value": 0.2749341130256653
+            },
+            {
+              "policy": 93226,
+              "feature_value": "B1",
+              "shap_value": 0.25240564346313477
+            },
+            {
+              "policy": 1180076,
+              "feature_value": "B6",
+              "shap_value": -0.18469743430614471
+            },
+            {
+              "policy": 93992,
+              "feature_value": "B4",
+              "shap_value": -0.1915762573480606
+            },
+            {
+              "policy": 2029212,
+              "feature_value": "B12",
+              "shap_value": 0.0009349808096885681
+            },
+            {
+              "policy": 3030488,
+              "feature_value": "B12",
+              "shap_value": 0.0014841407537460327
+            },
+            {
+              "policy": 6112727,
+              "feature_value": "B12",
+              "shap_value": -0.009987592697143555
+            },
+            {
+              "policy": 3203754,
+              "feature_value": "B1",
+              "shap_value": 0.23528020083904266
+            },
+            {
+              "policy": 4014687,
+              "feature_value": "B2",
+              "shap_value": -0.20834456384181976
+            },
+            {
+              "policy": 2051414,
+              "feature_value": "B10",
+              "shap_value": 0.24556685984134674
+            },
+            {
+              "policy": 2121464,
+              "feature_value": "B6",
+              "shap_value": -0.21157823503017426
+            },
+            {
+              "policy": 2223135,
+              "feature_value": "B1",
+              "shap_value": 0.28758326172828674
+            },
+            {
+              "policy": 2284223,
+              "feature_value": "B2",
+              "shap_value": -0.21482102572917938
+            },
+            {
+              "policy": 1117287,
+              "feature_value": "B2",
+              "shap_value": -0.21907059848308563
+            },
+            {
+              "policy": 4078302,
+              "feature_value": "B12",
+              "shap_value": -0.012093559838831425
+            },
+            {
+              "policy": 2207974,
+              "feature_value": "B1",
+              "shap_value": 0.2966011166572571
+            },
+            {
+              "policy": 4043264,
+              "feature_value": "B12",
+              "shap_value": -0.0021339058876037598
+            },
+            {
+              "policy": 130075,
+              "feature_value": "B4",
+              "shap_value": -0.21793605387210846
+            },
+            {
+              "policy": 84417,
+              "feature_value": "B3",
+              "shap_value": -0.19335131347179413
+            },
+            {
+              "policy": 4136359,
+              "feature_value": "B5",
+              "shap_value": -0.22125600278377533
+            },
+            {
+              "policy": 3206253,
+              "feature_value": "B2",
+              "shap_value": -0.21084825694561005
+            },
+            {
+              "policy": 2087984,
+              "feature_value": "B5",
+              "shap_value": -0.20504410564899445
+            },
+            {
+              "policy": 5069775,
+              "feature_value": "B10",
+              "shap_value": 0.2757406532764435
+            },
+            {
+              "policy": 1158632,
+              "feature_value": "B3",
+              "shap_value": -0.2258482128381729
+            },
+            {
+              "policy": 3126834,
+              "feature_value": "B1",
+              "shap_value": 0.30922555923461914
+            },
+            {
+              "policy": 3137936,
+              "feature_value": "B11",
+              "shap_value": 0.2321617156267166
+            },
+            {
+              "policy": 3032189,
+              "feature_value": "B12",
+              "shap_value": -0.011252529919147491
+            },
+            {
+              "policy": 6015526,
+              "feature_value": "B12",
+              "shap_value": -0.0036049559712409973
+            },
+            {
+              "policy": 1056809,
+              "feature_value": "B2",
+              "shap_value": -0.20833764970302582
+            },
+            {
+              "policy": 5030290,
+              "feature_value": "B12",
+              "shap_value": 0.001696661114692688
+            },
+            {
+              "policy": 3000065,
+              "feature_value": "B12",
+              "shap_value": -0.010066591203212738
+            },
+            {
+              "policy": 4135061,
+              "feature_value": "B3",
+              "shap_value": -0.21544869244098663
+            },
+            {
+              "policy": 6088264,
+              "feature_value": "B5",
+              "shap_value": -0.2203347533941269
+            },
+            {
+              "policy": 4131997,
+              "feature_value": "B2",
+              "shap_value": -0.22448493540287018
+            },
+            {
+              "policy": 127530,
+              "feature_value": "B1",
+              "shap_value": 0.2713760733604431
+            },
+            {
+              "policy": 2199408,
+              "feature_value": "B1",
+              "shap_value": 0.2869682312011719
+            },
+            {
+              "policy": 1081918,
+              "feature_value": "B2",
+              "shap_value": -0.21157823503017426
+            },
+            {
+              "policy": 6060089,
+              "feature_value": "B12",
+              "shap_value": -0.0035331696271896362
+            },
+            {
+              "policy": 3014715,
+              "feature_value": "B12",
+              "shap_value": 0.0003206506371498108
+            },
+            {
+              "policy": 1192542,
+              "feature_value": "B2",
+              "shap_value": -0.19261430203914642
+            },
+            {
+              "policy": 4181684,
+              "feature_value": "B2",
+              "shap_value": -0.19420193135738373
+            },
+            {
+              "policy": 2186447,
+              "feature_value": "B3",
+              "shap_value": -0.2088521271944046
+            },
+            {
+              "policy": 3203470,
+              "feature_value": "B1",
+              "shap_value": 0.29998356103897095
+            },
+            {
+              "policy": 1160682,
+              "feature_value": "B5",
+              "shap_value": -0.2187822312116623
+            },
+            {
+              "policy": 1140065,
+              "feature_value": "B2",
+              "shap_value": -0.20808137953281403
+            },
+            {
+              "policy": 3040908,
+              "feature_value": "B12",
+              "shap_value": -0.004047580063343048
+            },
+            {
+              "policy": 3064035,
+              "feature_value": "B13",
+              "shap_value": -0.2098875790834427
+            },
+            {
+              "policy": 2220613,
+              "feature_value": "B2",
+              "shap_value": -0.2186708003282547
+            },
+            {
+              "policy": 4168922,
+              "feature_value": "B1",
+              "shap_value": 0.2838185429573059
+            },
+            {
+              "policy": 4119809,
+              "feature_value": "B10",
+              "shap_value": 0.27811112999916077
+            },
+            {
+              "policy": 3086456,
+              "feature_value": "B1",
+              "shap_value": 0.28002309799194336
+            },
+            {
+              "policy": 4152394,
+              "feature_value": "B11",
+              "shap_value": 0.2461826056241989
+            },
+            {
+              "policy": 1168000,
+              "feature_value": "B11",
+              "shap_value": 0.2243439108133316
+            },
+            {
+              "policy": 6105240,
+              "feature_value": "B12",
+              "shap_value": 0.001696661114692688
+            },
+            {
+              "policy": 3006380,
+              "feature_value": "B5",
+              "shap_value": -0.20834456384181976
+            },
+            {
+              "policy": 62471,
+              "feature_value": "B5",
+              "shap_value": -0.20596186816692352
+            },
+            {
+              "policy": 168136,
+              "feature_value": "B1",
+              "shap_value": 0.2811443507671356
+            },
+            {
+              "policy": 1112413,
+              "feature_value": "B2",
+              "shap_value": -0.1968536525964737
+            },
+            {
+              "policy": 29163,
+              "feature_value": "B10",
+              "shap_value": 0.26972150802612305
+            },
+            {
+              "policy": 98004,
+              "feature_value": "B2",
+              "shap_value": -0.20345483720302582
+            },
+            {
+              "policy": 46202,
+              "feature_value": "B5",
+              "shap_value": -0.2117031365633011
+            },
+            {
+              "policy": 1145886,
+              "feature_value": "B6",
+              "shap_value": -0.2151268869638443
+            },
+            {
+              "policy": 3213444,
+              "feature_value": "B2",
+              "shap_value": -0.18839393556118011
+            },
+            {
+              "policy": 1186748,
+              "feature_value": "B1",
+              "shap_value": 0.259143203496933
+            },
+            {
+              "policy": 4181947,
+              "feature_value": "B1",
+              "shap_value": 0.26346662640571594
+            },
+            {
+              "policy": 5025497,
+              "feature_value": "B12",
+              "shap_value": -0.011252529919147491
+            },
+            {
+              "policy": 4128774,
+              "feature_value": "B1",
+              "shap_value": 0.2711372673511505
+            },
+            {
+              "policy": 1143730,
+              "feature_value": "B2",
+              "shap_value": -0.1993197649717331
+            },
+            {
+              "policy": 4134967,
+              "feature_value": "B2",
+              "shap_value": -0.20190684497356415
+            },
+            {
+              "policy": 2041945,
+              "feature_value": "B12",
+              "shap_value": -0.010117962956428528
+            },
+            {
+              "policy": 3136792,
+              "feature_value": "B5",
+              "shap_value": -0.21677954494953156
+            },
+            {
+              "policy": 1043923,
+              "feature_value": "B3",
+              "shap_value": -0.1924269050359726
+            },
+            {
+              "policy": 6059833,
+              "feature_value": "B12",
+              "shap_value": -0.004681393504142761
+            },
+            {
+              "policy": 2190548,
+              "feature_value": "B1",
+              "shap_value": 0.3090696930885315
+            },
+            {
+              "policy": 5081325,
+              "feature_value": "B1",
+              "shap_value": 0.288312166929245
+            },
+            {
+              "policy": 2230384,
+              "feature_value": "B1",
+              "shap_value": 0.26480475068092346
+            },
+            {
+              "policy": 2012972,
+              "feature_value": "B12",
+              "shap_value": -0.001990281045436859
+            },
+            {
+              "policy": 3182085,
+              "feature_value": "B5",
+              "shap_value": -0.19105087220668793
+            },
+            {
+              "policy": 72663,
+              "feature_value": "B5",
+              "shap_value": -0.2211368829011917
+            },
+            {
+              "policy": 4176860,
+              "feature_value": "B1",
+              "shap_value": 0.2520976662635803
+            },
+            {
+              "policy": 3081392,
+              "feature_value": "B6",
+              "shap_value": -0.21133680641651154
+            },
+            {
+              "policy": 4044864,
+              "feature_value": "B12",
+              "shap_value": 0.0014552175998687744
+            },
+            {
+              "policy": 3145548,
+              "feature_value": "B2",
+              "shap_value": -0.1924269050359726
+            },
+            {
+              "policy": 3145986,
+              "feature_value": "B1",
+              "shap_value": 0.290863960981369
+            },
+            {
+              "policy": 4167857,
+              "feature_value": "B2",
+              "shap_value": -0.19105087220668793
+            },
+            {
+              "policy": 3159904,
+              "feature_value": "B2",
+              "shap_value": -0.2135634571313858
+            },
+            {
+              "policy": 1198142,
+              "feature_value": "B2",
+              "shap_value": -0.18951894342899323
+            },
+            {
+              "policy": 3173139,
+              "feature_value": "B1",
+              "shap_value": 0.31733036041259766
+            },
+            {
+              "policy": 2022958,
+              "feature_value": "B12",
+              "shap_value": -0.004047580063343048
+            },
+            {
+              "policy": 2015253,
+              "feature_value": "B12",
+              "shap_value": -0.011149868369102478
+            },
+            {
+              "policy": 2099798,
+              "feature_value": "B1",
+              "shap_value": 0.3055614233016968
+            },
+            {
+              "policy": 2259624,
+              "feature_value": "B3",
+              "shap_value": -0.2319611757993698
+            },
+            {
+              "policy": 158439,
+              "feature_value": "B3",
+              "shap_value": -0.2027943879365921
+            },
+            {
+              "policy": 6098280,
+              "feature_value": "B12",
+              "shap_value": -0.003294125199317932
+            },
+            {
+              "policy": 2265708,
+              "feature_value": "B2",
+              "shap_value": -0.21587695181369781
+            },
+            {
+              "policy": 2100419,
+              "feature_value": "B3",
+              "shap_value": -0.22101463377475739
+            },
+            {
+              "policy": 1157199,
+              "feature_value": "B5",
+              "shap_value": -0.20729510486125946
+            },
+            {
+              "policy": 1160510,
+              "feature_value": "B5",
+              "shap_value": -0.21484149992465973
+            },
+            {
+              "policy": 4120392,
+              "feature_value": "B3",
+              "shap_value": -0.20360539853572845
+            },
+            {
+              "policy": 3165105,
+              "feature_value": "B12",
+              "shap_value": -0.006461642682552338
+            },
+            {
+              "policy": 2271013,
+              "feature_value": "B2",
+              "shap_value": -0.21932174265384674
+            },
+            {
+              "policy": 3161301,
+              "feature_value": "B5",
+              "shap_value": -0.1977597326040268
+            },
+            {
+              "policy": 2113513,
+              "feature_value": "B11",
+              "shap_value": 0.26230159401893616
+            },
+            {
+              "policy": 2287050,
+              "feature_value": "B10",
+              "shap_value": 0.26685723662376404
+            },
+            {
+              "policy": 4150126,
+              "feature_value": "B6",
+              "shap_value": -0.1924269050359726
+            },
+            {
+              "policy": 1012888,
+              "feature_value": "B12",
+              "shap_value": -0.0015369951725006104
+            },
+            {
+              "policy": 2091212,
+              "feature_value": "B1",
+              "shap_value": 0.2713760733604431
+            },
+            {
+              "policy": 2101034,
+              "feature_value": "B5",
+              "shap_value": -0.19801144301891327
+            },
+            {
+              "policy": 5082264,
+              "feature_value": "B12",
+              "shap_value": -0.011335418559610844
+            },
+            {
+              "policy": 4005890,
+              "feature_value": "B12",
+              "shap_value": -0.00869058072566986
+            },
+            {
+              "policy": 5101657,
+              "feature_value": "B12",
+              "shap_value": 0.0028312280774116516
+            },
+            {
+              "policy": 4138232,
+              "feature_value": "B2",
+              "shap_value": -0.21105287969112396
+            },
+            {
+              "policy": 3150737,
+              "feature_value": "B2",
+              "shap_value": -0.2047116607427597
+            },
+            {
+              "policy": 1099905,
+              "feature_value": "B6",
+              "shap_value": -0.21065552532672882
+            },
+            {
+              "policy": 1110003,
+              "feature_value": "B2",
+              "shap_value": -0.20596186816692352
+            },
+            {
+              "policy": 2156263,
+              "feature_value": "B2",
+              "shap_value": -0.20069576799869537
+            },
+            {
+              "policy": 2060699,
+              "feature_value": "B2",
+              "shap_value": -0.21271280944347382
+            },
+            {
+              "policy": 1106921,
+              "feature_value": "B4",
+              "shap_value": -0.2147834450006485
+            },
+            {
+              "policy": 3103078,
+              "feature_value": "B2",
+              "shap_value": -0.20357708632946014
+            },
+            {
+              "policy": 106989,
+              "feature_value": "B2",
+              "shap_value": -0.2072099894285202
+            }
+          ]
+        },
+        {
+          "feature": "Density",
+          "points": [
+            {
+              "policy": 2283094,
+              "feature_value": 269.0,
+              "shap_value": -0.10616999119520187
+            },
+            {
+              "policy": 3246487,
+              "feature_value": 108.0,
+              "shap_value": -0.14090506732463837
+            },
+            {
+              "policy": 3248686,
+              "feature_value": 2983.0,
+              "shap_value": 0.12981705367565155
+            },
+            {
+              "policy": 3152884,
+              "feature_value": 446.0,
+              "shap_value": 0.08776204288005829
+            },
+            {
+              "policy": 2158290,
+              "feature_value": 405.0,
+              "shap_value": 0.10980426520109177
+            },
+            {
+              "policy": 3165886,
+              "feature_value": 1054.0,
+              "shap_value": 0.09245884418487549
+            },
+            {
+              "policy": 3117949,
+              "feature_value": 186.0,
+              "shap_value": -0.1022353246808052
+            },
+            {
+              "policy": 2279272,
+              "feature_value": 217.0,
+              "shap_value": -0.10498321056365967
+            },
+            {
+              "policy": 4160907,
+              "feature_value": 27.0,
+              "shap_value": -0.14090506732463837
+            },
+            {
+              "policy": 1011845,
+              "feature_value": 1241.0,
+              "shap_value": 0.10361409187316895
+            },
+            {
+              "policy": 4129167,
+              "feature_value": 57.0,
+              "shap_value": -0.13254952430725098
+            },
+            {
+              "policy": 104258,
+              "feature_value": 369.0,
+              "shap_value": 0.06305652111768723
+            },
+            {
+              "policy": 3128875,
+              "feature_value": 155.0,
+              "shap_value": -0.11706177145242691
+            },
+            {
+              "policy": 6055645,
+              "feature_value": 45.0,
+              "shap_value": -0.14240430295467377
+            },
+            {
+              "policy": 5071053,
+              "feature_value": 542.0,
+              "shap_value": 0.08900313079357147
+            },
+            {
+              "policy": 4185488,
+              "feature_value": 91.0,
+              "shap_value": -0.15091267228126526
+            },
+            {
+              "policy": 1185950,
+              "feature_value": 782.0,
+              "shap_value": 0.088872529566288
+            },
+            {
+              "policy": 4175828,
+              "feature_value": 983.0,
+              "shap_value": 0.08605784177780151
+            },
+            {
+              "policy": 4035473,
+              "feature_value": 79.0,
+              "shap_value": -0.14240430295467377
+            },
+            {
+              "policy": 2035362,
+              "feature_value": 824.0,
+              "shap_value": 0.10999199002981186
+            },
+            {
+              "policy": 3030652,
+              "feature_value": 1729.0,
+              "shap_value": 0.12054665386676788
+            },
+            {
+              "policy": 1074278,
+              "feature_value": 421.0,
+              "shap_value": 0.09388644993305206
+            },
+            {
+              "policy": 2103932,
+              "feature_value": 745.0,
+              "shap_value": 0.08615462481975555
+            },
+            {
+              "policy": 2288842,
+              "feature_value": 1871.0,
+              "shap_value": 0.12056669592857361
+            },
+            {
+              "policy": 1107856,
+              "feature_value": 3963.0,
+              "shap_value": 0.11100377887487411
+            },
+            {
+              "policy": 1135562,
+              "feature_value": 634.0,
+              "shap_value": 0.09044133871793747
+            },
+            {
+              "policy": 149181,
+              "feature_value": 84.0,
+              "shap_value": -0.14079095423221588
+            },
+            {
+              "policy": 6090494,
+              "feature_value": 3744.0,
+              "shap_value": 0.12571074068546295
+            },
+            {
+              "policy": 4186218,
+              "feature_value": 46.0,
+              "shap_value": -0.14090506732463837
+            },
+            {
+              "policy": 5100713,
+              "feature_value": 8023.0,
+              "shap_value": 0.1938728541135788
+            },
+            {
+              "policy": 2080089,
+              "feature_value": 1313.0,
+              "shap_value": 0.10284856706857681
+            },
+            {
+              "policy": 1016010,
+              "feature_value": 3317.0,
+              "shap_value": 0.11863730102777481
+            },
+            {
+              "policy": 3109714,
+              "feature_value": 85.0,
+              "shap_value": -0.13867317140102386
+            },
+            {
+              "policy": 2272594,
+              "feature_value": 152.0,
+              "shap_value": -0.12361197173595428
+            },
+            {
+              "policy": 2103324,
+              "feature_value": 124.0,
+              "shap_value": -0.1289425641298294
+            },
+            {
+              "policy": 1099329,
+              "feature_value": 1054.0,
+              "shap_value": 0.1062076985836029
+            },
+            {
+              "policy": 3172056,
+              "feature_value": 99.0,
+              "shap_value": -0.14090506732463837
+            },
+            {
+              "policy": 3064322,
+              "feature_value": 3368.0,
+              "shap_value": 0.12097615003585815
+            },
+            {
+              "policy": 4185677,
+              "feature_value": 473.0,
+              "shap_value": 0.09531467407941818
+            },
+            {
+              "policy": 69985,
+              "feature_value": 369.0,
+              "shap_value": 0.0706397071480751
+            },
+            {
+              "policy": 2053379,
+              "feature_value": 295.0,
+              "shap_value": -0.10028161853551865
+            },
+            {
+              "policy": 144013,
+              "feature_value": 24.0,
+              "shap_value": -0.140090212225914
+            },
+            {
+              "policy": 2020015,
+              "feature_value": 49.0,
+              "shap_value": -0.14240430295467377
+            },
+            {
+              "policy": 6057203,
+              "feature_value": 1535.0,
+              "shap_value": 0.12092682719230652
+            },
+            {
+              "policy": 1198196,
+              "feature_value": 83.0,
+              "shap_value": -0.140090212225914
+            },
+            {
+              "policy": 1182577,
+              "feature_value": 47.0,
+              "shap_value": -0.1392163336277008
+            },
+            {
+              "policy": 5038775,
+              "feature_value": 3465.0,
+              "shap_value": 0.12269429117441177
+            },
+            {
+              "policy": 3088825,
+              "feature_value": 29.0,
+              "shap_value": -0.140090212225914
+            },
+            {
+              "policy": 2212594,
+              "feature_value": 77.0,
+              "shap_value": -0.14250414073467255
+            },
+            {
+              "policy": 4147219,
+              "feature_value": 235.0,
+              "shap_value": -0.10028161853551865
+            },
+            {
+              "policy": 3045232,
+              "feature_value": 56.0,
+              "shap_value": -0.1410154104232788
+            },
+            {
+              "policy": 4173594,
+              "feature_value": 4128.0,
+              "shap_value": 0.12710513174533844
+            },
+            {
+              "policy": 1160836,
+              "feature_value": 18.0,
+              "shap_value": -0.14910733699798584
+            },
+            {
+              "policy": 3061835,
+              "feature_value": 392.0,
+              "shap_value": 0.06802673637866974
+            },
+            {
+              "policy": 26667,
+              "feature_value": 46.0,
+              "shap_value": -0.1314278393983841
+            },
+            {
+              "policy": 32457,
+              "feature_value": 93.0,
+              "shap_value": -0.13224269449710846
+            },
+            {
+              "policy": 3106087,
+              "feature_value": 2521.0,
+              "shap_value": 0.11807721853256226
+            },
+            {
+              "policy": 18004,
+              "feature_value": 10.0,
+              "shap_value": -0.14255712926387787
+            },
+            {
+              "policy": 1119718,
+              "feature_value": 2567.0,
+              "shap_value": 0.12190911173820496
+            },
+            {
+              "policy": 4134168,
+              "feature_value": 30.0,
+              "shap_value": -0.14090506732463837
+            },
+            {
+              "policy": 1194335,
+              "feature_value": 103.0,
+              "shap_value": -0.14255712926387787
+            },
+            {
+              "policy": 60321,
+              "feature_value": 28.0,
+              "shap_value": -0.1314278393983841
+            },
+            {
+              "policy": 3026561,
+              "feature_value": 37.0,
+              "shap_value": -0.13909973204135895
+            },
+            {
+              "policy": 1107555,
+              "feature_value": 1182.0,
+              "shap_value": 0.09066846966743469
+            },
+            {
+              "policy": 3093270,
+              "feature_value": 110.0,
+              "shap_value": -0.1314278393983841
+            },
+            {
+              "policy": 3175262,
+              "feature_value": 3430.0,
+              "shap_value": 0.11859521269798279
+            },
+            {
+              "policy": 3154723,
+              "feature_value": 277.0,
+              "shap_value": -0.1077398806810379
+            },
+            {
+              "policy": 4168521,
+              "feature_value": 342.0,
+              "shap_value": 0.041102100163698196
+            },
+            {
+              "policy": 96633,
+              "feature_value": 1974.0,
+              "shap_value": 0.11868662387132645
+            },
+            {
+              "policy": 3027168,
+              "feature_value": 4253.0,
+              "shap_value": 0.12719771265983582
+            },
+            {
+              "policy": 154927,
+              "feature_value": 49.0,
+              "shap_value": -0.140090212225914
+            },
+            {
+              "policy": 2270991,
+              "feature_value": 330.0,
+              "shap_value": 0.03848912939429283
+            },
+            {
+              "policy": 3074794,
+              "feature_value": 19.0,
+              "shap_value": -0.13254952430725098
+            },
+            {
+              "policy": 3248730,
+              "feature_value": 8455.0,
+              "shap_value": 0.1931058168411255
+            },
+            {
+              "policy": 1192463,
+              "feature_value": 18.0,
+              "shap_value": -0.15148670971393585
+            },
+            {
+              "policy": 1191611,
+              "feature_value": 598.0,
+              "shap_value": 0.08968492597341537
+            },
+            {
+              "policy": 3147259,
+              "feature_value": 3368.0,
+              "shap_value": 0.12099102139472961
+            },
+            {
+              "policy": 40447,
+              "feature_value": 218.0,
+              "shap_value": -0.10498321056365967
+            },
+            {
+              "policy": 3074107,
+              "feature_value": 2620.0,
+              "shap_value": 0.10923632234334946
+            },
+            {
+              "policy": 2008595,
+              "feature_value": 3946.0,
+              "shap_value": 0.12187792360782623
+            },
+            {
+              "policy": 3166020,
+              "feature_value": 308.0,
+              "shap_value": 0.05895603075623512
+            },
+            {
+              "policy": 93226,
+              "feature_value": 8455.0,
+              "shap_value": 0.17997461557388306
+            },
+            {
+              "policy": 1180076,
+              "feature_value": 1271.0,
+              "shap_value": 0.10461602360010147
+            },
+            {
+              "policy": 93992,
+              "feature_value": 4762.0,
+              "shap_value": 0.16958653926849365
+            },
+            {
+              "policy": 2029212,
+              "feature_value": 5859.0,
+              "shap_value": 0.1894485503435135
+            },
+            {
+              "policy": 3030488,
+              "feature_value": 826.0,
+              "shap_value": 0.09995607286691666
+            },
+            {
+              "policy": 6112727,
+              "feature_value": 467.0,
+              "shap_value": 0.08211827278137207
+            },
+            {
+              "policy": 3203754,
+              "feature_value": 4116.0,
+              "shap_value": 0.10923632234334946
+            },
+            {
+              "policy": 4014687,
+              "feature_value": 1541.0,
+              "shap_value": 0.12274361401796341
+            },
+            {
+              "policy": 2051414,
+              "feature_value": 35.0,
+              "shap_value": -0.13128173351287842
+            },
+            {
+              "policy": 2121464,
+              "feature_value": 5449.0,
+              "shap_value": 0.18986518681049347
+            },
+            {
+              "policy": 2223135,
+              "feature_value": 1101.0,
+              "shap_value": 0.09066846966743469
+            },
+            {
+              "policy": 2284223,
+              "feature_value": 269.0,
+              "shap_value": -0.10347584635019302
+            },
+            {
+              "policy": 1117287,
+              "feature_value": 614.0,
+              "shap_value": 0.09925895929336548
+            },
+            {
+              "policy": 4078302,
+              "feature_value": 27.0,
+              "shap_value": -0.1392100751399994
+            },
+            {
+              "policy": 2207974,
+              "feature_value": 959.0,
+              "shap_value": 0.09969037026166916
+            },
+            {
+              "policy": 4043264,
+              "feature_value": 747.0,
+              "shap_value": 0.09039201587438583
+            },
+            {
+              "policy": 130075,
+              "feature_value": 575.0,
+              "shap_value": 0.09844411164522171
+            },
+            {
+              "policy": 84417,
+              "feature_value": 1408.0,
+              "shap_value": 0.11868662387132645
+            },
+            {
+              "policy": 4136359,
+              "feature_value": 1228.0,
+              "shap_value": 0.10299704223871231
+            },
+            {
+              "policy": 3206253,
+              "feature_value": 214.0,
+              "shap_value": -0.10208695381879807
+            },
+            {
+              "policy": 2087984,
+              "feature_value": 763.0,
+              "shap_value": 0.09097722172737122
+            },
+            {
+              "policy": 5069775,
+              "feature_value": 4656.0,
+              "shap_value": 0.15888401865959167
+            },
+            {
+              "policy": 1158632,
+              "feature_value": 91.0,
+              "shap_value": -0.1500978171825409
+            },
+            {
+              "policy": 3126834,
+              "feature_value": 26.0,
+              "shap_value": -0.14255712926387787
+            },
+            {
+              "policy": 3137936,
+              "feature_value": 878.0,
+              "shap_value": 0.09446652233600616
+            },
+            {
+              "policy": 3032189,
+              "feature_value": 25.0,
+              "shap_value": -0.14240430295467377
+            },
+            {
+              "policy": 6015526,
+              "feature_value": 725.0,
+              "shap_value": 0.09782075136899948
+            },
+            {
+              "policy": 1056809,
+              "feature_value": 61.0,
+              "shap_value": -0.14090506732463837
+            },
+            {
+              "policy": 5030290,
+              "feature_value": 3834.0,
+              "shap_value": 0.12269429117441177
+            },
+            {
+              "policy": 3000065,
+              "feature_value": 204.0,
+              "shap_value": -0.1027713418006897
+            },
+            {
+              "policy": 4135061,
+              "feature_value": 27.0,
+              "shap_value": -0.1445932686328888
+            },
+            {
+              "policy": 6088264,
+              "feature_value": 626.0,
+              "shap_value": 0.09041929244995117
+            },
+            {
+              "policy": 4131997,
+              "feature_value": 442.0,
+              "shap_value": 0.09766164422035217
+            },
+            {
+              "policy": 127530,
+              "feature_value": 1064.0,
+              "shap_value": 0.09110873937606812
+            },
+            {
+              "policy": 2199408,
+              "feature_value": 53.0,
+              "shap_value": -0.14048412442207336
+            },
+            {
+              "policy": 1081918,
+              "feature_value": 2733.0,
+              "shap_value": 0.11868662387132645
+            },
+            {
+              "policy": 6060089,
+              "feature_value": 436.0,
+              "shap_value": 0.09302227944135666
+            },
+            {
+              "policy": 3014715,
+              "feature_value": 27000.0,
+              "shap_value": 0.1917252242565155
+            },
+            {
+              "policy": 1192542,
+              "feature_value": 528.0,
+              "shap_value": 0.08499546349048615
+            },
+            {
+              "policy": 4181684,
+              "feature_value": 239.0,
+              "shap_value": -0.10208695381879807
+            },
+            {
+              "policy": 2186447,
+              "feature_value": 67.0,
+              "shap_value": -0.140090212225914
+            },
+            {
+              "policy": 3203470,
+              "feature_value": 3688.0,
+              "shap_value": 0.11224866658449173
+            },
+            {
+              "policy": 1160682,
+              "feature_value": 1328.0,
+              "shap_value": 0.11897699534893036
+            },
+            {
+              "policy": 1140065,
+              "feature_value": 380.0,
+              "shap_value": 0.06802673637866974
+            },
+            {
+              "policy": 3040908,
+              "feature_value": 1326.0,
+              "shap_value": 0.11863730102777481
+            },
+            {
+              "policy": 3064035,
+              "feature_value": 20.0,
+              "shap_value": -0.14090506732463837
+            },
+            {
+              "policy": 2220613,
+              "feature_value": 255.0,
+              "shap_value": -0.10266099870204926
+            },
+            {
+              "policy": 4168922,
+              "feature_value": 14.0,
+              "shap_value": -0.13254952430725098
+            },
+            {
+              "policy": 4119809,
+              "feature_value": 298.0,
+              "shap_value": -0.0921567976474762
+            },
+            {
+              "policy": 3086456,
+              "feature_value": 16.0,
+              "shap_value": -0.14079095423221588
+            },
+            {
+              "policy": 4152394,
+              "feature_value": 842.0,
+              "shap_value": 0.08663832396268845
+            },
+            {
+              "policy": 1168000,
+              "feature_value": 606.0,
+              "shap_value": 0.08005490899085999
+            },
+            {
+              "policy": 6105240,
+              "feature_value": 15703.0,
+              "shap_value": 0.1938728541135788
+            },
+            {
+              "policy": 3006380,
+              "feature_value": 1324.0,
+              "shap_value": 0.11533030867576599
+            },
+            {
+              "policy": 62471,
+              "feature_value": 70.0,
+              "shap_value": -0.13828487694263458
+            },
+            {
+              "policy": 168136,
+              "feature_value": 1228.0,
+              "shap_value": 0.09066846966743469
+            },
+            {
+              "policy": 1112413,
+              "feature_value": 393.0,
+              "shap_value": 0.08372025936841965
+            },
+            {
+              "policy": 29163,
+              "feature_value": 44.0,
+              "shap_value": -0.13046687841415405
+            },
+            {
+              "policy": 98004,
+              "feature_value": 192.0,
+              "shap_value": -0.10169058293104172
+            },
+            {
+              "policy": 46202,
+              "feature_value": 776.0,
+              "shap_value": 0.08905244618654251
+            },
+            {
+              "policy": 1145886,
+              "feature_value": 498.0,
+              "shap_value": 0.08581031113862991
+            },
+            {
+              "policy": 3213444,
+              "feature_value": 3301.0,
+              "shap_value": 0.12274361401796341
+            },
+            {
+              "policy": 1186748,
+              "feature_value": 1006.0,
+              "shap_value": 0.08605784177780151
+            },
+            {
+              "policy": 4181947,
+              "feature_value": 1045.0,
+              "shap_value": 0.0938766747713089
+            },
+            {
+              "policy": 5025497,
+              "feature_value": 84.0,
+              "shap_value": -0.14240430295467377
+            },
+            {
+              "policy": 4128774,
+              "feature_value": 634.0,
+              "shap_value": 0.08527875691652298
+            },
+            {
+              "policy": 1143730,
+              "feature_value": 73.0,
+              "shap_value": -0.13909973204135895
+            },
+            {
+              "policy": 4134967,
+              "feature_value": 662.0,
+              "shap_value": 0.09787007421255112
+            },
+            {
+              "policy": 2041945,
+              "feature_value": 52.0,
+              "shap_value": -0.14240430295467377
+            },
+            {
+              "policy": 3136792,
+              "feature_value": 5053.0,
+              "shap_value": 0.20314322412014008
+            },
+            {
+              "policy": 1043923,
+              "feature_value": 45.0,
+              "shap_value": -0.14090506732463837
+            },
+            {
+              "policy": 6059833,
+              "feature_value": 393.0,
+              "shap_value": 0.06541388481855392
+            },
+            {
+              "policy": 2190548,
+              "feature_value": 48.0,
+              "shap_value": -0.14255712926387787
+            },
+            {
+              "policy": 5081325,
+              "feature_value": 35.0,
+              "shap_value": -0.13254952430725098
+            },
+            {
+              "policy": 2230384,
+              "feature_value": 103.0,
+              "shap_value": -0.13224269449710846
+            },
+            {
+              "policy": 2012972,
+              "feature_value": 2365.0,
+              "shap_value": 0.12269429117441177
+            },
+            {
+              "policy": 3182085,
+              "feature_value": 39.0,
+              "shap_value": -0.14090506732463837
+            },
+            {
+              "policy": 72663,
+              "feature_value": 57.0,
+              "shap_value": -0.14914648234844208
+            },
+            {
+              "policy": 4176860,
+              "feature_value": 358.0,
+              "shap_value": 0.04581189528107643
+            },
+            {
+              "policy": 3081392,
+              "feature_value": 4762.0,
+              "shap_value": 0.16958653926849365
+            },
+            {
+              "policy": 4044864,
+              "feature_value": 9096.0,
+              "shap_value": 0.1938728541135788
+            },
+            {
+              "policy": 3145548,
+              "feature_value": 30.0,
+              "shap_value": -0.14090506732463837
+            },
+            {
+              "policy": 3145986,
+              "feature_value": 176.0,
+              "shap_value": -0.09373141080141068
+            },
+            {
+              "policy": 4167857,
+              "feature_value": 9.0,
+              "shap_value": -0.14090506732463837
+            },
+            {
+              "policy": 3159904,
+              "feature_value": 27.0,
+              "shap_value": -0.14090506732463837
+            },
+            {
+              "policy": 1198142,
+              "feature_value": 3862.0,
+              "shap_value": 0.12059596925973892
+            },
+            {
+              "policy": 3173139,
+              "feature_value": 145.0,
+              "shap_value": -0.12594769895076752
+            },
+            {
+              "policy": 2022958,
+              "feature_value": 3317.0,
+              "shap_value": 0.11863730102777481
+            },
+            {
+              "policy": 2015253,
+              "feature_value": 38.0,
+              "shap_value": -0.14795388281345367
+            },
+            {
+              "policy": 2099798,
+              "feature_value": 1489.0,
+              "shap_value": 0.11586949229240417
+            },
+            {
+              "policy": 2259624,
+              "feature_value": 322.0,
+              "shap_value": 0.04470554366707802
+            },
+            {
+              "policy": 158439,
+              "feature_value": 11.0,
+              "shap_value": -0.1500978171825409
+            },
+            {
+              "policy": 6098280,
+              "feature_value": 672.0,
+              "shap_value": 0.09903904795646667
+            },
+            {
+              "policy": 2265708,
+              "feature_value": 4059.0,
+              "shap_value": 0.12081487476825714
+            },
+            {
+              "policy": 2100419,
+              "feature_value": 115.0,
+              "shap_value": -0.1440485268831253
+            },
+            {
+              "policy": 1157199,
+              "feature_value": 741.0,
+              "shap_value": 0.09368196129798889
+            },
+            {
+              "policy": 1160510,
+              "feature_value": 4436.0,
+              "shap_value": 0.14674688875675201
+            },
+            {
+              "policy": 4120392,
+              "feature_value": 19.0,
+              "shap_value": -0.13828487694263458
+            },
+            {
+              "policy": 3165105,
+              "feature_value": 738.0,
+              "shap_value": 0.08576098829507828
+            },
+            {
+              "policy": 2271013,
+              "feature_value": 62.0,
+              "shap_value": -0.13909973204135895
+            },
+            {
+              "policy": 3161301,
+              "feature_value": 399.0,
+              "shap_value": 0.11004584282636642
+            },
+            {
+              "policy": 2113513,
+              "feature_value": 1704.0,
+              "shap_value": 0.11424225568771362
+            },
+            {
+              "policy": 2287050,
+              "feature_value": 71.0,
+              "shap_value": -0.1354045569896698
+            },
+            {
+              "policy": 4150126,
+              "feature_value": 27.0,
+              "shap_value": -0.14090506732463837
+            },
+            {
+              "policy": 1012888,
+              "feature_value": 3317.0,
+              "shap_value": 0.11863730102777481
+            },
+            {
+              "policy": 2091212,
+              "feature_value": 4348.0,
+              "shap_value": 0.13499218225479126
+            },
+            {
+              "policy": 2101034,
+              "feature_value": 1054.0,
+              "shap_value": 0.10284856706857681
+            },
+            {
+              "policy": 5082264,
+              "feature_value": 42.0,
+              "shap_value": -0.1510230153799057
+            },
+            {
+              "policy": 4005890,
+              "feature_value": 243.0,
+              "shap_value": -0.10358618944883347
+            },
+            {
+              "policy": 5101657,
+              "feature_value": 4218.0,
+              "shap_value": 0.13111279904842377
+            },
+            {
+              "policy": 4138232,
+              "feature_value": 91.0,
+              "shap_value": -0.14090506732463837
+            },
+            {
+              "policy": 3150737,
+              "feature_value": 17.0,
+              "shap_value": -0.1500978171825409
+            },
+            {
+              "policy": 1099905,
+              "feature_value": 2227.0,
+              "shap_value": 0.12059596925973892
+            },
+            {
+              "policy": 1110003,
+              "feature_value": 140.0,
+              "shap_value": -0.12279713153839111
+            },
+            {
+              "policy": 2156263,
+              "feature_value": 138.0,
+              "shap_value": -0.12361197173595428
+            },
+            {
+              "policy": 2060699,
+              "feature_value": 3430.0,
+              "shap_value": 0.11868662387132645
+            },
+            {
+              "policy": 1106921,
+              "feature_value": 4393.0,
+              "shap_value": 0.15557292103767395
+            },
+            {
+              "policy": 3103078,
+              "feature_value": 29.0,
+              "shap_value": -0.14914648234844208
+            },
+            {
+              "policy": 106989,
+              "feature_value": 27000.0,
+              "shap_value": 0.19177454710006714
+            }
+          ]
+        },
+        {
+          "feature": "BonusMalus",
+          "points": [
+            {
+              "policy": 2283094,
+              "feature_value": 54.0,
+              "shap_value": -0.04284343123435974
+            },
+            {
+              "policy": 3246487,
+              "feature_value": 50.0,
+              "shap_value": -0.049126312136650085
+            },
+            {
+              "policy": 3248686,
+              "feature_value": 57.0,
+              "shap_value": 0.051192037761211395
+            },
+            {
+              "policy": 3152884,
+              "feature_value": 50.0,
+              "shap_value": -0.0656246468424797
+            },
+            {
+              "policy": 2158290,
+              "feature_value": 50.0,
+              "shap_value": -0.0553758479654789
+            },
+            {
+              "policy": 3165886,
+              "feature_value": 90.0,
+              "shap_value": 0.30990391969680786
+            },
+            {
+              "policy": 3117949,
+              "feature_value": 51.0,
+              "shap_value": -0.047707006335258484
+            },
+            {
+              "policy": 2279272,
+              "feature_value": 76.0,
+              "shap_value": 0.05757398158311844
+            },
+            {
+              "policy": 4160907,
+              "feature_value": 50.0,
+              "shap_value": -0.05519124120473862
+            },
+            {
+              "policy": 1011845,
+              "feature_value": 50.0,
+              "shap_value": -0.06443804502487183
+            },
+            {
+              "policy": 4129167,
+              "feature_value": 50.0,
+              "shap_value": -0.06345417350530624
+            },
+            {
+              "policy": 104258,
+              "feature_value": 50.0,
+              "shap_value": -0.0663326159119606
+            },
+            {
+              "policy": 3128875,
+              "feature_value": 50.0,
+              "shap_value": -0.05714862421154976
+            },
+            {
+              "policy": 6055645,
+              "feature_value": 50.0,
+              "shap_value": -0.055798474699258804
+            },
+            {
+              "policy": 5071053,
+              "feature_value": 50.0,
+              "shap_value": -0.06374707818031311
+            },
+            {
+              "policy": 4185488,
+              "feature_value": 58.0,
+              "shap_value": 0.0404973104596138
+            },
+            {
+              "policy": 1185950,
+              "feature_value": 72.0,
+              "shap_value": 0.07717318832874298
+            },
+            {
+              "policy": 4175828,
+              "feature_value": 50.0,
+              "shap_value": -0.06209526211023331
+            },
+            {
+              "policy": 4035473,
+              "feature_value": 50.0,
+              "shap_value": -0.055798474699258804
+            },
+            {
+              "policy": 2035362,
+              "feature_value": 61.0,
+              "shap_value": 0.0665501058101654
+            },
+            {
+              "policy": 3030652,
+              "feature_value": 50.0,
+              "shap_value": -0.06227574124932289
+            },
+            {
+              "policy": 1074278,
+              "feature_value": 50.0,
+              "shap_value": -0.06028951704502106
+            },
+            {
+              "policy": 2103932,
+              "feature_value": 90.0,
+              "shap_value": 0.30172738432884216
+            },
+            {
+              "policy": 2288842,
+              "feature_value": 83.0,
+              "shap_value": 0.11904995143413544
+            },
+            {
+              "policy": 1107856,
+              "feature_value": 50.0,
+              "shap_value": -0.06928924471139908
+            },
+            {
+              "policy": 1135562,
+              "feature_value": 50.0,
+              "shap_value": -0.0620199590921402
+            },
+            {
+              "policy": 149181,
+              "feature_value": 68.0,
+              "shap_value": 0.08937431871891022
+            },
+            {
+              "policy": 6090494,
+              "feature_value": 60.0,
+              "shap_value": 0.06410287320613861
+            },
+            {
+              "policy": 4186218,
+              "feature_value": 50.0,
+              "shap_value": -0.049126312136650085
+            },
+            {
+              "policy": 5100713,
+              "feature_value": 50.0,
+              "shap_value": -0.06287634372711182
+            },
+            {
+              "policy": 2080089,
+              "feature_value": 50.0,
+              "shap_value": -0.061951663345098495
+            },
+            {
+              "policy": 1016010,
+              "feature_value": 50.0,
+              "shap_value": -0.06262951344251633
+            },
+            {
+              "policy": 3109714,
+              "feature_value": 54.0,
+              "shap_value": -0.03399767354130745
+            },
+            {
+              "policy": 2272594,
+              "feature_value": 50.0,
+              "shap_value": -0.052907075732946396
+            },
+            {
+              "policy": 2103324,
+              "feature_value": 90.0,
+              "shap_value": 0.28925809264183044
+            },
+            {
+              "policy": 1099329,
+              "feature_value": 106.0,
+              "shap_value": 0.31136202812194824
+            },
+            {
+              "policy": 3172056,
+              "feature_value": 50.0,
+              "shap_value": -0.05519124120473862
+            },
+            {
+              "policy": 3064322,
+              "feature_value": 50.0,
+              "shap_value": -0.06253084540367126
+            },
+            {
+              "policy": 4185677,
+              "feature_value": 60.0,
+              "shap_value": 0.07871194183826447
+            },
+            {
+              "policy": 69985,
+              "feature_value": 50.0,
+              "shap_value": -0.06265120208263397
+            },
+            {
+              "policy": 2053379,
+              "feature_value": 50.0,
+              "shap_value": -0.0517161600291729
+            },
+            {
+              "policy": 144013,
+              "feature_value": 50.0,
+              "shap_value": -0.050037648528814316
+            },
+            {
+              "policy": 2020015,
+              "feature_value": 50.0,
+              "shap_value": -0.055925190448760986
+            },
+            {
+              "policy": 6057203,
+              "feature_value": 50.0,
+              "shap_value": -0.06385886669158936
+            },
+            {
+              "policy": 1198196,
+              "feature_value": 50.0,
+              "shap_value": -0.048547133803367615
+            },
+            {
+              "policy": 1182577,
+              "feature_value": 68.0,
+              "shap_value": 0.06449392437934875
+            },
+            {
+              "policy": 5038775,
+              "feature_value": 50.0,
+              "shap_value": -0.06339562684297562
+            },
+            {
+              "policy": 3088825,
+              "feature_value": 50.0,
+              "shap_value": -0.049126312136650085
+            },
+            {
+              "policy": 2212594,
+              "feature_value": 90.0,
+              "shap_value": 0.2952978014945984
+            },
+            {
+              "policy": 4147219,
+              "feature_value": 50.0,
+              "shap_value": -0.05037819594144821
+            },
+            {
+              "policy": 3045232,
+              "feature_value": 50.0,
+              "shap_value": -0.05709844455122948
+            },
+            {
+              "policy": 4173594,
+              "feature_value": 50.0,
+              "shap_value": -0.053634509444236755
+            },
+            {
+              "policy": 1160836,
+              "feature_value": 60.0,
+              "shap_value": 0.030202478170394897
+            },
+            {
+              "policy": 3061835,
+              "feature_value": 50.0,
+              "shap_value": -0.05978785455226898
+            },
+            {
+              "policy": 26667,
+              "feature_value": 50.0,
+              "shap_value": -0.05784500762820244
+            },
+            {
+              "policy": 32457,
+              "feature_value": 50.0,
+              "shap_value": -0.05673146992921829
+            },
+            {
+              "policy": 3106087,
+              "feature_value": 57.0,
+              "shap_value": 0.0637495368719101
+            },
+            {
+              "policy": 18004,
+              "feature_value": 59.0,
+              "shap_value": 0.060915861278772354
+            },
+            {
+              "policy": 1119718,
+              "feature_value": 95.0,
+              "shap_value": 0.29889214038848877
+            },
+            {
+              "policy": 4134168,
+              "feature_value": 50.0,
+              "shap_value": -0.05234726518392563
+            },
+            {
+              "policy": 1194335,
+              "feature_value": 58.0,
+              "shap_value": 0.05353624001145363
+            },
+            {
+              "policy": 60321,
+              "feature_value": 50.0,
+              "shap_value": -0.06015462428331375
+            },
+            {
+              "policy": 3026561,
+              "feature_value": 50.0,
+              "shap_value": -0.05424503982067108
+            },
+            {
+              "policy": 1107555,
+              "feature_value": 50.0,
+              "shap_value": -0.06208673119544983
+            },
+            {
+              "policy": 3093270,
+              "feature_value": 50.0,
+              "shap_value": -0.05673146992921829
+            },
+            {
+              "policy": 3175262,
+              "feature_value": 90.0,
+              "shap_value": 0.2883718013763428
+            },
+            {
+              "policy": 3154723,
+              "feature_value": 60.0,
+              "shap_value": 0.03775809332728386
+            },
+            {
+              "policy": 4168521,
+              "feature_value": 50.0,
+              "shap_value": -0.06265120208263397
+            },
+            {
+              "policy": 96633,
+              "feature_value": 50.0,
+              "shap_value": -0.05497247353196144
+            },
+            {
+              "policy": 3027168,
+              "feature_value": 50.0,
+              "shap_value": -0.06385886669158936
+            },
+            {
+              "policy": 154927,
+              "feature_value": 50.0,
+              "shap_value": -0.05577041953802109
+            },
+            {
+              "policy": 2270991,
+              "feature_value": 50.0,
+              "shap_value": -0.05978785455226898
+            },
+            {
+              "policy": 3074794,
+              "feature_value": 50.0,
+              "shap_value": -0.06345417350530624
+            },
+            {
+              "policy": 3248730,
+              "feature_value": 51.0,
+              "shap_value": -0.050600141286849976
+            },
+            {
+              "policy": 1192463,
+              "feature_value": 60.0,
+              "shap_value": 0.04096139222383499
+            },
+            {
+              "policy": 1191611,
+              "feature_value": 72.0,
+              "shap_value": 0.09835454821586609
+            },
+            {
+              "policy": 3147259,
+              "feature_value": 90.0,
+              "shap_value": 0.2950563132762909
+            },
+            {
+              "policy": 40447,
+              "feature_value": 68.0,
+              "shap_value": 0.06719445437192917
+            },
+            {
+              "policy": 3074107,
+              "feature_value": 50.0,
+              "shap_value": -0.06940768659114838
+            },
+            {
+              "policy": 2008595,
+              "feature_value": 53.0,
+              "shap_value": -0.054364584386348724
+            },
+            {
+              "policy": 3166020,
+              "feature_value": 100.0,
+              "shap_value": 0.3271171450614929
+            },
+            {
+              "policy": 93226,
+              "feature_value": 50.0,
+              "shap_value": -0.058346498757600784
+            },
+            {
+              "policy": 1180076,
+              "feature_value": 50.0,
+              "shap_value": -0.05385114625096321
+            },
+            {
+              "policy": 93992,
+              "feature_value": 50.0,
+              "shap_value": -0.05244181305170059
+            },
+            {
+              "policy": 2029212,
+              "feature_value": 90.0,
+              "shap_value": 0.3029025197029114
+            },
+            {
+              "policy": 3030488,
+              "feature_value": 50.0,
+              "shap_value": -0.06374707818031311
+            },
+            {
+              "policy": 6112727,
+              "feature_value": 51.0,
+              "shap_value": -0.05337807163596153
+            },
+            {
+              "policy": 3203754,
+              "feature_value": 50.0,
+              "shap_value": -0.06334275752305984
+            },
+            {
+              "policy": 4014687,
+              "feature_value": 50.0,
+              "shap_value": -0.06049525365233421
+            },
+            {
+              "policy": 2051414,
+              "feature_value": 50.0,
+              "shap_value": -0.05950170010328293
+            },
+            {
+              "policy": 2121464,
+              "feature_value": 50.0,
+              "shap_value": -0.05886506289243698
+            },
+            {
+              "policy": 2223135,
+              "feature_value": 50.0,
+              "shap_value": -0.06550988554954529
+            },
+            {
+              "policy": 2284223,
+              "feature_value": 50.0,
+              "shap_value": -0.054017990827560425
+            },
+            {
+              "policy": 1117287,
+              "feature_value": 68.0,
+              "shap_value": 0.08273032307624817
+            },
+            {
+              "policy": 4078302,
+              "feature_value": 50.0,
+              "shap_value": -0.054814279079437256
+            },
+            {
+              "policy": 2207974,
+              "feature_value": 64.0,
+              "shap_value": 0.08797086775302887
+            },
+            {
+              "policy": 4043264,
+              "feature_value": 50.0,
+              "shap_value": -0.06392715871334076
+            },
+            {
+              "policy": 130075,
+              "feature_value": 76.0,
+              "shap_value": 0.08669258654117584
+            },
+            {
+              "policy": 84417,
+              "feature_value": 50.0,
+              "shap_value": -0.055618271231651306
+            },
+            {
+              "policy": 4136359,
+              "feature_value": 100.0,
+              "shap_value": 0.3127259612083435
+            },
+            {
+              "policy": 3206253,
+              "feature_value": 50.0,
+              "shap_value": -0.05577041953802109
+            },
+            {
+              "policy": 2087984,
+              "feature_value": 100.0,
+              "shap_value": 0.30150100588798523
+            },
+            {
+              "policy": 5069775,
+              "feature_value": 80.0,
+              "shap_value": 0.1417483240365982
+            },
+            {
+              "policy": 1158632,
+              "feature_value": 60.0,
+              "shap_value": 0.04500161483883858
+            },
+            {
+              "policy": 3126834,
+              "feature_value": 62.0,
+              "shap_value": 0.07864135503768921
+            },
+            {
+              "policy": 3137936,
+              "feature_value": 64.0,
+              "shap_value": 0.061060868203639984
+            },
+            {
+              "policy": 3032189,
+              "feature_value": 50.0,
+              "shap_value": -0.05713643878698349
+            },
+            {
+              "policy": 6015526,
+              "feature_value": 69.0,
+              "shap_value": 0.09279057383537292
+            },
+            {
+              "policy": 1056809,
+              "feature_value": 50.0,
+              "shap_value": -0.05519124120473862
+            },
+            {
+              "policy": 5030290,
+              "feature_value": 50.0,
+              "shap_value": -0.06339562684297562
+            },
+            {
+              "policy": 3000065,
+              "feature_value": 50.0,
+              "shap_value": -0.05726315453648567
+            },
+            {
+              "policy": 4135061,
+              "feature_value": 51.0,
+              "shap_value": -0.051709339022636414
+            },
+            {
+              "policy": 6088264,
+              "feature_value": 85.0,
+              "shap_value": 0.12340469658374786
+            },
+            {
+              "policy": 4131997,
+              "feature_value": 55.0,
+              "shap_value": 0.05739682540297508
+            },
+            {
+              "policy": 127530,
+              "feature_value": 50.0,
+              "shap_value": -0.06940768659114838
+            },
+            {
+              "policy": 2199408,
+              "feature_value": 75.0,
+              "shap_value": 0.06669043749570847
+            },
+            {
+              "policy": 1081918,
+              "feature_value": 50.0,
+              "shap_value": -0.05938434228301048
+            },
+            {
+              "policy": 6060089,
+              "feature_value": 50.0,
+              "shap_value": -0.06450633704662323
+            },
+            {
+              "policy": 3014715,
+              "feature_value": 50.0,
+              "shap_value": -0.06345552206039429
+            },
+            {
+              "policy": 1192542,
+              "feature_value": 50.0,
+              "shap_value": -0.053091686218976974
+            },
+            {
+              "policy": 4181684,
+              "feature_value": 50.0,
+              "shap_value": -0.050530895590782166
+            },
+            {
+              "policy": 2186447,
+              "feature_value": 50.0,
+              "shap_value": -0.05234726518392563
+            },
+            {
+              "policy": 3203470,
+              "feature_value": 54.0,
+              "shap_value": -0.03400923311710358
+            },
+            {
+              "policy": 1160682,
+              "feature_value": 112.0,
+              "shap_value": 0.3127259612083435
+            },
+            {
+              "policy": 1140065,
+              "feature_value": 50.0,
+              "shap_value": -0.0572589747607708
+            },
+            {
+              "policy": 3040908,
+              "feature_value": 50.0,
+              "shap_value": -0.06262951344251633
+            },
+            {
+              "policy": 3064035,
+              "feature_value": 50.0,
+              "shap_value": -0.05176808685064316
+            },
+            {
+              "policy": 2220613,
+              "feature_value": 50.0,
+              "shap_value": -0.0530463345348835
+            },
+            {
+              "policy": 4168922,
+              "feature_value": 50.0,
+              "shap_value": -0.060031015425920486
+            },
+            {
+              "policy": 4119809,
+              "feature_value": 50.0,
+              "shap_value": -0.05588705465197563
+            },
+            {
+              "policy": 3086456,
+              "feature_value": 72.0,
+              "shap_value": 0.07816852629184723
+            },
+            {
+              "policy": 4152394,
+              "feature_value": 50.0,
+              "shap_value": -0.06651891767978668
+            },
+            {
+              "policy": 1168000,
+              "feature_value": 50.0,
+              "shap_value": -0.06220148876309395
+            },
+            {
+              "policy": 6105240,
+              "feature_value": 50.0,
+              "shap_value": -0.06345552206039429
+            },
+            {
+              "policy": 3006380,
+              "feature_value": 50.0,
+              "shap_value": -0.06206759810447693
+            },
+            {
+              "policy": 62471,
+              "feature_value": 50.0,
+              "shap_value": -0.05082188546657562
+            },
+            {
+              "policy": 168136,
+              "feature_value": 50.0,
+              "shap_value": -0.06342469900846481
+            },
+            {
+              "policy": 1112413,
+              "feature_value": 112.0,
+              "shap_value": 0.31254011392593384
+            },
+            {
+              "policy": 29163,
+              "feature_value": 50.0,
+              "shap_value": -0.06292486190795898
+            },
+            {
+              "policy": 98004,
+              "feature_value": 100.0,
+              "shap_value": 0.2942503094673157
+            },
+            {
+              "policy": 46202,
+              "feature_value": 50.0,
+              "shap_value": -0.06205795332789421
+            },
+            {
+              "policy": 1145886,
+              "feature_value": 50.0,
+              "shap_value": -0.05832045152783394
+            },
+            {
+              "policy": 3213444,
+              "feature_value": 50.0,
+              "shap_value": -0.055062394589185715
+            },
+            {
+              "policy": 1186748,
+              "feature_value": 50.0,
+              "shap_value": -0.06120098754763603
+            },
+            {
+              "policy": 4181947,
+              "feature_value": 100.0,
+              "shap_value": 0.31037989258766174
+            },
+            {
+              "policy": 5025497,
+              "feature_value": 50.0,
+              "shap_value": -0.055798474699258804
+            },
+            {
+              "policy": 4128774,
+              "feature_value": 50.0,
+              "shap_value": -0.06605282425880432
+            },
+            {
+              "policy": 1143730,
+              "feature_value": 50.0,
+              "shap_value": -0.04760093614459038
+            },
+            {
+              "policy": 4134967,
+              "feature_value": 71.0,
+              "shap_value": 0.07102647423744202
+            },
+            {
+              "policy": 2041945,
+              "feature_value": 50.0,
+              "shap_value": -0.055798474699258804
+            },
+            {
+              "policy": 3136792,
+              "feature_value": 60.0,
+              "shap_value": 0.06451880931854248
+            },
+            {
+              "policy": 1043923,
+              "feature_value": 50.0,
+              "shap_value": -0.05004405230283737
+            },
+            {
+              "policy": 6059833,
+              "feature_value": 50.0,
+              "shap_value": -0.06280597299337387
+            },
+            {
+              "policy": 2190548,
+              "feature_value": 62.0,
+              "shap_value": 0.08008143305778503
+            },
+            {
+              "policy": 5081325,
+              "feature_value": 50.0,
+              "shap_value": -0.06345417350530624
+            },
+            {
+              "policy": 2230384,
+              "feature_value": 50.0,
+              "shap_value": -0.052616238594055176
+            },
+            {
+              "policy": 2012972,
+              "feature_value": 50.0,
+              "shap_value": -0.0635237842798233
+            },
+            {
+              "policy": 3182085,
+              "feature_value": 50.0,
+              "shap_value": -0.049126312136650085
+            },
+            {
+              "policy": 72663,
+              "feature_value": 71.0,
+              "shap_value": 0.06733158975839615
+            },
+            {
+              "policy": 4176860,
+              "feature_value": 50.0,
+              "shap_value": -0.06311166286468506
+            },
+            {
+              "policy": 3081392,
+              "feature_value": 50.0,
+              "shap_value": -0.06042388454079628
+            },
+            {
+              "policy": 4044864,
+              "feature_value": 50.0,
+              "shap_value": -0.06287634372711182
+            },
+            {
+              "policy": 3145548,
+              "feature_value": 50.0,
+              "shap_value": -0.049126312136650085
+            },
+            {
+              "policy": 3145986,
+              "feature_value": 50.0,
+              "shap_value": -0.06345417350530624
+            },
+            {
+              "policy": 4167857,
+              "feature_value": 50.0,
+              "shap_value": -0.049126312136650085
+            },
+            {
+              "policy": 3159904,
+              "feature_value": 50.0,
+              "shap_value": -0.05519124120473862
+            },
+            {
+              "policy": 1198142,
+              "feature_value": 50.0,
+              "shap_value": -0.05589021369814873
+            },
+            {
+              "policy": 3173139,
+              "feature_value": 57.0,
+              "shap_value": 0.04109110310673714
+            },
+            {
+              "policy": 2022958,
+              "feature_value": 50.0,
+              "shap_value": -0.06129154562950134
+            },
+            {
+              "policy": 2015253,
+              "feature_value": 54.0,
+              "shap_value": -0.04743983596563339
+            },
+            {
+              "policy": 2099798,
+              "feature_value": 58.0,
+              "shap_value": 0.07225187122821808
+            },
+            {
+              "policy": 2259624,
+              "feature_value": 62.0,
+              "shap_value": 0.06458218395709991
+            },
+            {
+              "policy": 158439,
+              "feature_value": 57.0,
+              "shap_value": 0.027640921995043755
+            },
+            {
+              "policy": 6098280,
+              "feature_value": 60.0,
+              "shap_value": 0.06505726277828217
+            },
+            {
+              "policy": 2265708,
+              "feature_value": 80.0,
+              "shap_value": 0.13412153720855713
+            },
+            {
+              "policy": 2100419,
+              "feature_value": 112.0,
+              "shap_value": 0.3030700385570526
+            },
+            {
+              "policy": 1157199,
+              "feature_value": 51.0,
+              "shap_value": -0.053755033761262894
+            },
+            {
+              "policy": 1160510,
+              "feature_value": 90.0,
+              "shap_value": 0.30351075530052185
+            },
+            {
+              "policy": 4120392,
+              "feature_value": 50.0,
+              "shap_value": -0.04914100468158722
+            },
+            {
+              "policy": 3165105,
+              "feature_value": 50.0,
+              "shap_value": -0.06164299696683884
+            },
+            {
+              "policy": 2271013,
+              "feature_value": 50.0,
+              "shap_value": -0.052907075732946396
+            },
+            {
+              "policy": 3161301,
+              "feature_value": 95.0,
+              "shap_value": 0.3003411889076233
+            },
+            {
+              "policy": 2113513,
+              "feature_value": 64.0,
+              "shap_value": 0.08266085386276245
+            },
+            {
+              "policy": 2287050,
+              "feature_value": 85.0,
+              "shap_value": 0.1364065259695053
+            },
+            {
+              "policy": 4150126,
+              "feature_value": 50.0,
+              "shap_value": -0.049126312136650085
+            },
+            {
+              "policy": 1012888,
+              "feature_value": 50.0,
+              "shap_value": -0.06129154562950134
+            },
+            {
+              "policy": 2091212,
+              "feature_value": 50.0,
+              "shap_value": -0.06925046443939209
+            },
+            {
+              "policy": 2101034,
+              "feature_value": 50.0,
+              "shap_value": -0.061951663345098495
+            },
+            {
+              "policy": 5082264,
+              "feature_value": 64.0,
+              "shap_value": 0.05512767285108566
+            },
+            {
+              "policy": 4005890,
+              "feature_value": 50.0,
+              "shap_value": -0.0574975349009037
+            },
+            {
+              "policy": 5101657,
+              "feature_value": 50.0,
+              "shap_value": -0.06339562684297562
+            },
+            {
+              "policy": 4138232,
+              "feature_value": 50.0,
+              "shap_value": -0.05519124120473862
+            },
+            {
+              "policy": 3150737,
+              "feature_value": 64.0,
+              "shap_value": 0.04381668195128441
+            },
+            {
+              "policy": 1099905,
+              "feature_value": 50.0,
+              "shap_value": -0.06161658093333244
+            },
+            {
+              "policy": 1110003,
+              "feature_value": 50.0,
+              "shap_value": -0.05082188546657562
+            },
+            {
+              "policy": 2156263,
+              "feature_value": 50.0,
+              "shap_value": -0.04760093614459038
+            },
+            {
+              "policy": 2060699,
+              "feature_value": 50.0,
+              "shap_value": -0.05938434228301048
+            },
+            {
+              "policy": 1106921,
+              "feature_value": 61.0,
+              "shap_value": 0.05028783902525902
+            },
+            {
+              "policy": 3103078,
+              "feature_value": 76.0,
+              "shap_value": 0.058511897921562195
+            },
+            {
+              "policy": 106989,
+              "feature_value": 50.0,
+              "shap_value": -0.060969144105911255
+            }
+          ]
+        },
+        {
+          "feature": "LogDensity",
+          "points": [
+            {
+              "policy": 2283094,
+              "feature_value": 5.598421958998375,
+              "shap_value": -0.02983235940337181
+            },
+            {
+              "policy": 3246487,
+              "feature_value": 4.6913478822291435,
+              "shap_value": -0.03666626289486885
+            },
+            {
+              "policy": 3248686,
+              "feature_value": 8.001019961323651,
+              "shap_value": 0.04169691354036331
+            },
+            {
+              "policy": 3152884,
+              "feature_value": 6.102558594613569,
+              "shap_value": 0.012522224336862564
+            },
+            {
+              "policy": 2158290,
+              "feature_value": 6.0063531596017325,
+              "shap_value": 0.01619795709848404
+            },
+            {
+              "policy": 3165886,
+              "feature_value": 6.961296045910167,
+              "shap_value": 0.027571354061365128
+            },
+            {
+              "policy": 3117949,
+              "feature_value": 5.231108616854587,
+              "shap_value": -0.02983235940337181
+            },
+            {
+              "policy": 2279272,
+              "feature_value": 5.384495062789089,
+              "shap_value": -0.02963883988559246
+            },
+            {
+              "policy": 4160907,
+              "feature_value": 3.332204510175204,
+              "shap_value": -0.03666626289486885
+            },
+            {
+              "policy": 1011845,
+              "feature_value": 7.124478262493424,
+              "shap_value": 0.03684611618518829
+            },
+            {
+              "policy": 4129167,
+              "feature_value": 4.060443010546419,
+              "shap_value": -0.03391234576702118
+            },
+            {
+              "policy": 104258,
+              "feature_value": 5.91350300563827,
+              "shap_value": 0.015407063066959381
+            },
+            {
+              "policy": 3128875,
+              "feature_value": 5.049856007249537,
+              "shap_value": -0.03391234576702118
+            },
+            {
+              "policy": 6055645,
+              "feature_value": 3.828641396489095,
+              "shap_value": -0.034006550908088684
+            },
+            {
+              "policy": 5071053,
+              "feature_value": 6.297109319933935,
+              "shap_value": 0.021080518141388893
+            },
+            {
+              "policy": 4185488,
+              "feature_value": 4.5217885770490405,
+              "shap_value": -0.04164328798651695
+            },
+            {
+              "policy": 1185950,
+              "feature_value": 6.663132695990803,
+              "shap_value": 0.02217761054635048
+            },
+            {
+              "policy": 4175828,
+              "feature_value": 6.891625897052253,
+              "shap_value": 0.021353114396333694
+            },
+            {
+              "policy": 4035473,
+              "feature_value": 4.382026634673881,
+              "shap_value": -0.03666626289486885
+            },
+            {
+              "policy": 2035362,
+              "feature_value": 6.715383386334681,
+              "shap_value": 0.02593131549656391
+            },
+            {
+              "policy": 3030652,
+              "feature_value": 7.455876687491824,
+              "shap_value": 0.03684611618518829
+            },
+            {
+              "policy": 1074278,
+              "feature_value": 6.045005314036012,
+              "shap_value": 0.014680560678243637
+            },
+            {
+              "policy": 2103932,
+              "feature_value": 6.61472560020376,
+              "shap_value": 0.02217761054635048
+            },
+            {
+              "policy": 2288842,
+              "feature_value": 7.534762657037537,
+              "shap_value": 0.03873410075902939
+            },
+            {
+              "policy": 1107856,
+              "feature_value": 8.285008895449879,
+              "shap_value": 0.033794600516557693
+            },
+            {
+              "policy": 1135562,
+              "feature_value": 6.453624998892692,
+              "shap_value": 0.022597914561629295
+            },
+            {
+              "policy": 149181,
+              "feature_value": 4.442651256490317,
+              "shap_value": -0.036229658871889114
+            },
+            {
+              "policy": 6090494,
+              "feature_value": 8.22817689595132,
+              "shap_value": 0.03873410075902939
+            },
+            {
+              "policy": 4186218,
+              "feature_value": 3.8501476017100584,
+              "shap_value": -0.034006550908088684
+            },
+            {
+              "policy": 5100713,
+              "feature_value": 8.990192329641772,
+              "shap_value": 0.03684611618518829
+            },
+            {
+              "policy": 2080089,
+              "feature_value": 7.1808311990445555,
+              "shap_value": 0.038363512605428696
+            },
+            {
+              "policy": 1016010,
+              "feature_value": 8.10711747075039,
+              "shap_value": 0.03699607029557228
+            },
+            {
+              "policy": 3109714,
+              "feature_value": 4.454347296253507,
+              "shap_value": -0.033374447375535965
+            },
+            {
+              "policy": 2272594,
+              "feature_value": 5.030437921392435,
+              "shap_value": -0.03525916859507561
+            },
+            {
+              "policy": 2103324,
+              "feature_value": 4.8283137373023015,
+              "shap_value": -0.038983575999736786
+            },
+            {
+              "policy": 1099329,
+              "feature_value": 6.961296045910167,
+              "shap_value": 0.03214026615023613
+            },
+            {
+              "policy": 3172056,
+              "feature_value": 4.605170185988092,
+              "shap_value": -0.03666626289486885
+            },
+            {
+              "policy": 3064322,
+              "feature_value": 8.122371243406553,
+              "shap_value": 0.038363512605428696
+            },
+            {
+              "policy": 4185677,
+              "feature_value": 6.161207321695077,
+              "shap_value": 0.018740464001893997
+            },
+            {
+              "policy": 69985,
+              "feature_value": 5.91350300563827,
+              "shap_value": 0.014680560678243637
+            },
+            {
+              "policy": 2053379,
+              "feature_value": 5.69035945432406,
+              "shap_value": -0.024786053225398064
+            },
+            {
+              "policy": 144013,
+              "feature_value": 3.2188758248682006,
+              "shap_value": -0.034006550908088684
+            },
+            {
+              "policy": 2020015,
+              "feature_value": 3.912023005428146,
+              "shap_value": -0.034006550908088684
+            },
+            {
+              "policy": 6057203,
+              "feature_value": 7.336936913707618,
+              "shap_value": 0.038363512605428696
+            },
+            {
+              "policy": 1198196,
+              "feature_value": 4.430816798843313,
+              "shap_value": -0.034006550908088684
+            },
+            {
+              "policy": 1182577,
+              "feature_value": 3.871201010907891,
+              "shap_value": -0.033180929720401764
+            },
+            {
+              "policy": 5038775,
+              "feature_value": 8.150756470275551,
+              "shap_value": 0.038363512605428696
+            },
+            {
+              "policy": 3088825,
+              "feature_value": 3.4011973816621555,
+              "shap_value": -0.034006550908088684
+            },
+            {
+              "policy": 2212594,
+              "feature_value": 4.356708826689592,
+              "shap_value": -0.035934846848249435
+            },
+            {
+              "policy": 4147219,
+              "feature_value": 5.4638318050256105,
+              "shap_value": -0.024786053225398064
+            },
+            {
+              "policy": 3045232,
+              "feature_value": 4.04305126783455,
+              "shap_value": -0.034006550908088684
+            },
+            {
+              "policy": 4173594,
+              "feature_value": 8.32579052588609,
+              "shap_value": 0.03699607029557228
+            },
+            {
+              "policy": 1160836,
+              "feature_value": 2.9444389791664403,
+              "shap_value": -0.035934846848249435
+            },
+            {
+              "policy": 3061835,
+              "feature_value": 5.973809611869261,
+              "shap_value": 0.014830514788627625
+            },
+            {
+              "policy": 26667,
+              "feature_value": 3.8501476017100584,
+              "shap_value": -0.02984553948044777
+            },
+            {
+              "policy": 32457,
+              "feature_value": 4.543294782270004,
+              "shap_value": -0.032505251467227936
+            },
+            {
+              "policy": 3106087,
+              "feature_value": 7.8328075165248645,
+              "shap_value": 0.03712800145149231
+            },
+            {
+              "policy": 18004,
+              "feature_value": 2.3978952727983707,
+              "shap_value": -0.036229658871889114
+            },
+            {
+              "policy": 1119718,
+              "feature_value": 7.850882664809852,
+              "shap_value": 0.04169691354036331
+            },
+            {
+              "policy": 4134168,
+              "feature_value": 3.4339872044851463,
+              "shap_value": -0.034006550908088684
+            },
+            {
+              "policy": 1194335,
+              "feature_value": 4.6443908991413725,
+              "shap_value": -0.03888937085866928
+            },
+            {
+              "policy": 60321,
+              "feature_value": 3.367295829986474,
+              "shap_value": -0.02984553948044777
+            },
+            {
+              "policy": 3026561,
+              "feature_value": 3.6375861597263857,
+              "shap_value": -0.03525916859507561
+            },
+            {
+              "policy": 1107555,
+              "feature_value": 7.075808863978387,
+              "shap_value": 0.030909761786460876
+            },
+            {
+              "policy": 3093270,
+              "feature_value": 4.709530201312334,
+              "shap_value": -0.02984553948044777
+            },
+            {
+              "policy": 3175262,
+              "feature_value": 8.14060704285845,
+              "shap_value": 0.03873410075902939
+            },
+            {
+              "policy": 3154723,
+              "feature_value": 5.627621113690637,
+              "shap_value": -0.03268757089972496
+            },
+            {
+              "policy": 4168521,
+              "feature_value": 5.8377304471659395,
+              "shap_value": 0.002798678120598197
+            },
+            {
+              "policy": 96633,
+              "feature_value": 7.5883236773352225,
+              "shap_value": 0.03699607029557228
+            },
+            {
+              "policy": 3027168,
+              "feature_value": 8.355614995760183,
+              "shap_value": 0.03684611618518829
+            },
+            {
+              "policy": 154927,
+              "feature_value": 3.912023005428146,
+              "shap_value": -0.034006550908088684
+            },
+            {
+              "policy": 2270991,
+              "feature_value": 5.802118375377063,
+              "shap_value": 0.0029486326966434717
+            },
+            {
+              "policy": 3074794,
+              "feature_value": 2.995732273553991,
+              "shap_value": -0.03391234576702118
+            },
+            {
+              "policy": 3248730,
+              "feature_value": 9.042631527550073,
+              "shap_value": 0.03746271878480911
+            },
+            {
+              "policy": 1192463,
+              "feature_value": 2.9444389791664403,
+              "shap_value": -0.038983575999736786
+            },
+            {
+              "policy": 1191611,
+              "feature_value": 6.395261598115449,
+              "shap_value": 0.02217761054635048
+            },
+            {
+              "policy": 3147259,
+              "feature_value": 8.122371243406553,
+              "shap_value": 0.04169691354036331
+            },
+            {
+              "policy": 40447,
+              "feature_value": 5.389071729816501,
+              "shap_value": -0.02963883988559246
+            },
+            {
+              "policy": 3074107,
+              "feature_value": 7.8713112033234065,
+              "shap_value": 0.033794600516557693
+            },
+            {
+              "policy": 2008595,
+              "feature_value": 8.280711075662847,
+              "shap_value": 0.03746271878480911
+            },
+            {
+              "policy": 3166020,
+              "feature_value": 5.733341276897746,
+              "shap_value": 0.01413208432495594
+            },
+            {
+              "policy": 93226,
+              "feature_value": 9.042631527550073,
+              "shap_value": 0.03242715820670128
+            },
+            {
+              "policy": 1180076,
+              "feature_value": 7.148345743900068,
+              "shap_value": 0.038363512605428696
+            },
+            {
+              "policy": 93992,
+              "feature_value": 8.46863300080086,
+              "shap_value": 0.03699607029557228
+            },
+            {
+              "policy": 2029212,
+              "feature_value": 8.675904882571059,
+              "shap_value": 0.04169691354036331
+            },
+            {
+              "policy": 3030488,
+              "feature_value": 6.717804695023691,
+              "shap_value": 0.022597914561629295
+            },
+            {
+              "policy": 6112727,
+              "feature_value": 6.148468295917647,
+              "shap_value": 0.013779766857624054
+            },
+            {
+              "policy": 3203754,
+              "feature_value": 8.322880021769905,
+              "shap_value": 0.033794600516557693
+            },
+            {
+              "policy": 4014687,
+              "feature_value": 7.340835554123275,
+              "shap_value": 0.038363512605428696
+            },
+            {
+              "policy": 2051414,
+              "feature_value": 3.58351893845611,
+              "shap_value": -0.03391234576702118
+            },
+            {
+              "policy": 2121464,
+              "feature_value": 8.60337088765729,
+              "shap_value": 0.03547867387533188
+            },
+            {
+              "policy": 2223135,
+              "feature_value": 7.004881989712859,
+              "shap_value": 0.022870510816574097
+            },
+            {
+              "policy": 2284223,
+              "feature_value": 5.598421958998375,
+              "shap_value": -0.02771054580807686
+            },
+            {
+              "policy": 1117287,
+              "feature_value": 6.421622267806518,
+              "shap_value": 0.02593131549656391
+            },
+            {
+              "policy": 4078302,
+              "feature_value": 3.332204510175204,
+              "shap_value": -0.03525916859507561
+            },
+            {
+              "policy": 2207974,
+              "feature_value": 6.866933284461882,
+              "shap_value": 0.027571354061365128
+            },
+            {
+              "policy": 4043264,
+              "feature_value": 6.617402977974478,
+              "shap_value": 0.021080518141388893
+            },
+            {
+              "policy": 130075,
+              "feature_value": 6.3561076606958915,
+              "shap_value": 0.027448711916804314
+            },
+            {
+              "policy": 84417,
+              "feature_value": 7.25063551189868,
+              "shap_value": 0.03699607029557228
+            },
+            {
+              "policy": 4136359,
+              "feature_value": 7.113956109566034,
+              "shap_value": 0.04025149717926979
+            },
+            {
+              "policy": 3206253,
+              "feature_value": 5.3706380281276624,
+              "shap_value": -0.026193149387836456
+            },
+            {
+              "policy": 2087984,
+              "feature_value": 6.638567789166521,
+              "shap_value": 0.022968504577875137
+            },
+            {
+              "policy": 5069775,
+              "feature_value": 8.446126742982377,
+              "shap_value": 0.03712800145149231
+            },
+            {
+              "policy": 1158632,
+              "feature_value": 4.5217885770490405,
+              "shap_value": -0.038983575999736786
+            },
+            {
+              "policy": 3126834,
+              "feature_value": 3.295836866004329,
+              "shap_value": -0.03888937085866928
+            },
+            {
+              "policy": 3137936,
+              "feature_value": 6.778784897685177,
+              "shap_value": 0.02217761054635048
+            },
+            {
+              "policy": 3032189,
+              "feature_value": 3.258096538021482,
+              "shap_value": -0.03666626289486885
+            },
+            {
+              "policy": 6015526,
+              "feature_value": 6.587550014824796,
+              "shap_value": 0.02593131549656391
+            },
+            {
+              "policy": 1056809,
+              "feature_value": 4.127134385045092,
+              "shap_value": -0.03666626289486885
+            },
+            {
+              "policy": 5030290,
+              "feature_value": 8.251924713801357,
+              "shap_value": 0.038363512605428696
+            },
+            {
+              "policy": 3000065,
+              "feature_value": 5.3230099791384085,
+              "shap_value": -0.02771054580807686
+            },
+            {
+              "policy": 4135061,
+              "feature_value": 3.332204510175204,
+              "shap_value": -0.036128364503383636
+            },
+            {
+              "policy": 6088264,
+              "feature_value": 6.440946540632921,
+              "shap_value": 0.022968504577875137
+            },
+            {
+              "policy": 4131997,
+              "feature_value": 6.093569770045136,
+              "shap_value": 0.01656854711472988
+            },
+            {
+              "policy": 127530,
+              "feature_value": 6.970730078143525,
+              "shap_value": 0.02423795312643051
+            },
+            {
+              "policy": 2199408,
+              "feature_value": 3.9889840465642745,
+              "shap_value": -0.033180929720401764
+            },
+            {
+              "policy": 1081918,
+              "feature_value": 7.913521017283895,
+              "shap_value": 0.03699607029557228
+            },
+            {
+              "policy": 6060089,
+              "feature_value": 6.07993319509559,
+              "shap_value": 0.01619795709848404
+            },
+            {
+              "policy": 3014715,
+              "feature_value": 10.203629181337648,
+              "shap_value": 0.03684611618518829
+            },
+            {
+              "policy": 1192542,
+              "feature_value": 6.270988431858299,
+              "shap_value": 0.02123047225177288
+            },
+            {
+              "policy": 4181684,
+              "feature_value": 5.480638923341991,
+              "shap_value": -0.02771054580807686
+            },
+            {
+              "policy": 2186447,
+              "feature_value": 4.219507705176107,
+              "shap_value": -0.034006550908088684
+            },
+            {
+              "policy": 3203470,
+              "feature_value": 8.213110697596676,
+              "shap_value": 0.03137641027569771
+            },
+            {
+              "policy": 1160682,
+              "feature_value": 7.192182058713246,
+              "shap_value": 0.03873410075902939
+            },
+            {
+              "policy": 1140065,
+              "feature_value": 5.942799375126701,
+              "shap_value": 0.014830514788627625
+            },
+            {
+              "policy": 3040908,
+              "feature_value": 7.190676034332207,
+              "shap_value": 0.03699607029557228
+            },
+            {
+              "policy": 3064035,
+              "feature_value": 3.044522437723423,
+              "shap_value": -0.03666626289486885
+            },
+            {
+              "policy": 2220613,
+              "feature_value": 5.545177444479562,
+              "shap_value": -0.02771054580807686
+            },
+            {
+              "policy": 4168922,
+              "feature_value": 2.70805020110221,
+              "shap_value": -0.03125263378024101
+            },
+            {
+              "policy": 4119809,
+              "feature_value": 5.700443573390687,
+              "shap_value": -0.022032136097550392
+            },
+            {
+              "policy": 3086456,
+              "feature_value": 2.833213344056216,
+              "shap_value": -0.036229658871889114
+            },
+            {
+              "policy": 4152394,
+              "feature_value": 6.736966958001855,
+              "shap_value": 0.021807020530104637
+            },
+            {
+              "policy": 1168000,
+              "feature_value": 6.408528791059498,
+              "shap_value": 0.020439578220248222
+            },
+            {
+              "policy": 6105240,
+              "feature_value": 9.661670735956298,
+              "shap_value": 0.038363512605428696
+            },
+            {
+              "policy": 3006380,
+              "feature_value": 7.1891677384203225,
+              "shap_value": 0.03684611618518829
+            },
+            {
+              "policy": 62471,
+              "feature_value": 4.2626798770413155,
+              "shap_value": -0.03259945660829544
+            },
+            {
+              "policy": 168136,
+              "feature_value": 7.113956109566034,
+              "shap_value": 0.03242715820670128
+            },
+            {
+              "policy": 1112413,
+              "feature_value": 5.976350909297934,
+              "shap_value": 0.019531358033418655
+            },
+            {
+              "policy": 29163,
+              "feature_value": 3.8066624897703196,
+              "shap_value": -0.03125263378024101
+            },
+            {
+              "policy": 98004,
+              "feature_value": 5.262690188904886,
+              "shap_value": -0.03268757089972496
+            },
+            {
+              "policy": 46202,
+              "feature_value": 6.655440350367647,
+              "shap_value": 0.022597914561629295
+            },
+            {
+              "policy": 1145886,
+              "feature_value": 6.212606095751519,
+              "shap_value": 0.01971307583153248
+            },
+            {
+              "policy": 3213444,
+              "feature_value": 8.102283624480073,
+              "shap_value": 0.03684611618518829
+            },
+            {
+              "policy": 1186748,
+              "feature_value": 6.914730892718563,
+              "shap_value": 0.022870510816574097
+            },
+            {
+              "policy": 4181947,
+              "feature_value": 6.952728644624869,
+              "shap_value": 0.027571354061365128
+            },
+            {
+              "policy": 5025497,
+              "feature_value": 4.442651256490317,
+              "shap_value": -0.034006550908088684
+            },
+            {
+              "policy": 4128774,
+              "feature_value": 6.453624998892692,
+              "shap_value": 0.021807020530104637
+            },
+            {
+              "policy": 1143730,
+              "feature_value": 4.30406509320417,
+              "shap_value": -0.03525916859507561
+            },
+            {
+              "policy": 4134967,
+              "feature_value": 6.4967749901858625,
+              "shap_value": 0.02593131549656391
+            },
+            {
+              "policy": 2041945,
+              "feature_value": 3.970291913552122,
+              "shap_value": -0.034006550908088684
+            },
+            {
+              "policy": 3136792,
+              "feature_value": 8.52793528794814,
+              "shap_value": 0.04169691354036331
+            },
+            {
+              "policy": 1043923,
+              "feature_value": 3.828641396489095,
+              "shap_value": -0.034006550908088684
+            },
+            {
+              "policy": 6059833,
+              "feature_value": 5.976350909297934,
+              "shap_value": 0.01619795709848404
+            },
+            {
+              "policy": 2190548,
+              "feature_value": 3.8918202981106265,
+              "shap_value": -0.03888937085866928
+            },
+            {
+              "policy": 5081325,
+              "feature_value": 3.58351893845611,
+              "shap_value": -0.03391234576702118
+            },
+            {
+              "policy": 2230384,
+              "feature_value": 4.6443908991413725,
+              "shap_value": -0.032505251467227936
+            },
+            {
+              "policy": 2012972,
+              "feature_value": 7.768956044538332,
+              "shap_value": 0.038363512605428696
+            },
+            {
+              "policy": 3182085,
+              "feature_value": 3.6888794541139363,
+              "shap_value": -0.03666626289486885
+            },
+            {
+              "policy": 72663,
+              "feature_value": 4.060443010546419,
+              "shap_value": -0.038983575999736786
+            },
+            {
+              "policy": 4176860,
+              "feature_value": 5.883322388488279,
+              "shap_value": 0.009281285107135773
+            },
+            {
+              "policy": 3081392,
+              "feature_value": 8.46863300080086,
+              "shap_value": 0.03699607029557228
+            },
+            {
+              "policy": 4044864,
+              "feature_value": 9.115699967822062,
+              "shap_value": 0.038363512605428696
+            },
+            {
+              "policy": 3145548,
+              "feature_value": 3.4339872044851463,
+              "shap_value": -0.03666626289486885
+            },
+            {
+              "policy": 3145986,
+              "feature_value": 5.176149732573829,
+              "shap_value": -0.023439230397343636
+            },
+            {
+              "policy": 4167857,
+              "feature_value": 2.302585092994046,
+              "shap_value": -0.03666626289486885
+            },
+            {
+              "policy": 3159904,
+              "feature_value": 3.332204510175204,
+              "shap_value": -0.034006550908088684
+            },
+            {
+              "policy": 1198142,
+              "feature_value": 8.259199362666282,
+              "shap_value": 0.03684611618518829
+            },
+            {
+              "policy": 3173139,
+              "feature_value": 4.983606621708336,
+              "shap_value": -0.033180929720401764
+            },
+            {
+              "policy": 2022958,
+              "feature_value": 8.10711747075039,
+              "shap_value": 0.03699607029557228
+            },
+            {
+              "policy": 2015253,
+              "feature_value": 3.6635616461296463,
+              "shap_value": -0.0387880764901638
+            },
+            {
+              "policy": 2099798,
+              "feature_value": 7.306531398939505,
+              "shap_value": 0.034165188670158386
+            },
+            {
+              "policy": 2259624,
+              "feature_value": 5.777652323222656,
+              "shap_value": 0.006204059347510338
+            },
+            {
+              "policy": 158439,
+              "feature_value": 2.4849066497880004,
+              "shap_value": -0.038983575999736786
+            },
+            {
+              "policy": 6098280,
+              "feature_value": 6.511745329644728,
+              "shap_value": 0.02593131549656391
+            },
+            {
+              "policy": 2265708,
+              "feature_value": 8.308938252595778,
+              "shap_value": 0.04169691354036331
+            },
+            {
+              "policy": 2100419,
+              "feature_value": 4.7535901911063645,
+              "shap_value": -0.038983575999736786
+            },
+            {
+              "policy": 1157199,
+              "feature_value": 6.60934924316738,
+              "shap_value": 0.024659933522343636
+            },
+            {
+              "policy": 1160510,
+              "feature_value": 8.39773375137891,
+              "shap_value": 0.04169691354036331
+            },
+            {
+              "policy": 4120392,
+              "feature_value": 2.995732273553991,
+              "shap_value": -0.03259945660829544
+            },
+            {
+              "policy": 3165105,
+              "feature_value": 6.6052979209482015,
+              "shap_value": 0.01971307583153248
+            },
+            {
+              "policy": 2271013,
+              "feature_value": 4.143134726391533,
+              "shap_value": -0.03525916859507561
+            },
+            {
+              "policy": 3161301,
+              "feature_value": 5.991464547107982,
+              "shap_value": 0.019531358033418655
+            },
+            {
+              "policy": 2113513,
+              "feature_value": 7.4413203897176174,
+              "shap_value": 0.034165188670158386
+            },
+            {
+              "policy": 2287050,
+              "feature_value": 4.276666119016055,
+              "shap_value": -0.036229658871889114
+            },
+            {
+              "policy": 4150126,
+              "feature_value": 3.332204510175204,
+              "shap_value": -0.034006550908088684
+            },
+            {
+              "policy": 1012888,
+              "feature_value": 8.10711747075039,
+              "shap_value": 0.03699607029557228
+            },
+            {
+              "policy": 2091212,
+              "feature_value": 8.37770121259764,
+              "shap_value": 0.03227720409631729
+            },
+            {
+              "policy": 2101034,
+              "feature_value": 6.961296045910167,
+              "shap_value": 0.028806867077946663
+            },
+            {
+              "policy": 5082264,
+              "feature_value": 3.7612001156935624,
+              "shap_value": -0.038983575999736786
+            },
+            {
+              "policy": 4005890,
+              "feature_value": 5.497168225293202,
+              "shap_value": -0.026193149387836456
+            },
+            {
+              "policy": 5101657,
+              "feature_value": 8.347353412124338,
+              "shap_value": 0.038363512605428696
+            },
+            {
+              "policy": 4138232,
+              "feature_value": 4.5217885770490405,
+              "shap_value": -0.03666626289486885
+            },
+            {
+              "policy": 3150737,
+              "feature_value": 2.8903717578961645,
+              "shap_value": -0.038983575999736786
+            },
+            {
+              "policy": 1099905,
+              "feature_value": 7.708859601047175,
+              "shap_value": 0.03684611618518829
+            },
+            {
+              "policy": 1110003,
+              "feature_value": 4.948759890378168,
+              "shap_value": -0.03259945660829544
+            },
+            {
+              "policy": 2156263,
+              "feature_value": 4.9344739331306915,
+              "shap_value": -0.03525916859507561
+            },
+            {
+              "policy": 2060699,
+              "feature_value": 8.14060704285845,
+              "shap_value": 0.03699607029557228
+            },
+            {
+              "policy": 1106921,
+              "feature_value": 8.387995252944556,
+              "shap_value": 0.04169691354036331
+            },
+            {
+              "policy": 3103078,
+              "feature_value": 3.4011973816621555,
+              "shap_value": -0.038983575999736786
+            },
+            {
+              "policy": 106989,
+              "feature_value": 10.203629181337648,
+              "shap_value": 0.03684611618518829
+            }
+          ]
+        },
+        {
+          "feature": "Region",
+          "points": [
+            {
+              "policy": 2283094,
+              "feature_value": "Languedoc-Roussillon",
+              "shap_value": 0.029247036203742027
+            },
+            {
+              "policy": 3246487,
+              "feature_value": "Haute-Normandie",
+              "shap_value": -0.021821925416588783
+            },
+            {
+              "policy": 3248686,
+              "feature_value": "Nord-Pas-de-Calais",
+              "shap_value": 0.03369956091046333
+            },
+            {
+              "policy": 3152884,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.03014063835144043
+            },
+            {
+              "policy": 2158290,
+              "feature_value": "Centre",
+              "shap_value": -0.02058166265487671
+            },
+            {
+              "policy": 3165886,
+              "feature_value": "Centre",
+              "shap_value": -0.023470815271139145
+            },
+            {
+              "policy": 3117949,
+              "feature_value": "Centre",
+              "shap_value": -0.02394581027328968
+            },
+            {
+              "policy": 2279272,
+              "feature_value": "Pays-de-la-Loire",
+              "shap_value": 0.018646812066435814
+            },
+            {
+              "policy": 4160907,
+              "feature_value": "Centre",
+              "shap_value": -0.02428644895553589
+            },
+            {
+              "policy": 1011845,
+              "feature_value": "Bourgogne",
+              "shap_value": -0.02328166365623474
+            },
+            {
+              "policy": 4129167,
+              "feature_value": "Centre",
+              "shap_value": -0.032471854239702225
+            },
+            {
+              "policy": 104258,
+              "feature_value": "Centre",
+              "shap_value": -0.03239067271351814
+            },
+            {
+              "policy": 3128875,
+              "feature_value": "Centre",
+              "shap_value": -0.033900924026966095
+            },
+            {
+              "policy": 6055645,
+              "feature_value": "Midi-Pyrenees",
+              "shap_value": 0.02980528026819229
+            },
+            {
+              "policy": 5071053,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.02687941864132881
+            },
+            {
+              "policy": 4185488,
+              "feature_value": "Centre",
+              "shap_value": -0.02155563421547413
+            },
+            {
+              "policy": 1185950,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.02119150385260582
+            },
+            {
+              "policy": 4175828,
+              "feature_value": "Pays-de-la-Loire",
+              "shap_value": 0.030429530888795853
+            },
+            {
+              "policy": 4035473,
+              "feature_value": "Midi-Pyrenees",
+              "shap_value": 0.02980528026819229
+            },
+            {
+              "policy": 2035362,
+              "feature_value": "Languedoc-Roussillon",
+              "shap_value": 0.03306243568658829
+            },
+            {
+              "policy": 3030652,
+              "feature_value": "Limousin",
+              "shap_value": 0.03514382988214493
+            },
+            {
+              "policy": 1074278,
+              "feature_value": "Centre",
+              "shap_value": -0.01915259100496769
+            },
+            {
+              "policy": 2103932,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.025523098185658455
+            },
+            {
+              "policy": 2288842,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.013865174725651741
+            },
+            {
+              "policy": 1107856,
+              "feature_value": "Languedoc-Roussillon",
+              "shap_value": 0.0322096161544323
+            },
+            {
+              "policy": 1135562,
+              "feature_value": "Bretagne",
+              "shap_value": -0.02058166265487671
+            },
+            {
+              "policy": 149181,
+              "feature_value": "Centre",
+              "shap_value": -0.029498232528567314
+            },
+            {
+              "policy": 6090494,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.01678011380136013
+            },
+            {
+              "policy": 4186218,
+              "feature_value": "Bretagne",
+              "shap_value": -0.02285737730562687
+            },
+            {
+              "policy": 5100713,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.028513185679912567
+            },
+            {
+              "policy": 2080089,
+              "feature_value": "Centre",
+              "shap_value": -0.022104239091277122
+            },
+            {
+              "policy": 1016010,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.021976279094815254
+            },
+            {
+              "policy": 3109714,
+              "feature_value": "Bretagne",
+              "shap_value": -0.03247838839888573
+            },
+            {
+              "policy": 2272594,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.026281796395778656
+            },
+            {
+              "policy": 2103324,
+              "feature_value": "Centre",
+              "shap_value": -0.020665712654590607
+            },
+            {
+              "policy": 1099329,
+              "feature_value": "Centre",
+              "shap_value": -0.01682589389383793
+            },
+            {
+              "policy": 3172056,
+              "feature_value": "Centre",
+              "shap_value": -0.02428644895553589
+            },
+            {
+              "policy": 3064322,
+              "feature_value": "Centre",
+              "shap_value": -0.020675167441368103
+            },
+            {
+              "policy": 4185677,
+              "feature_value": "Bretagne",
+              "shap_value": -0.025572214275598526
+            },
+            {
+              "policy": 69985,
+              "feature_value": "Bretagne",
+              "shap_value": -0.020225008949637413
+            },
+            {
+              "policy": 2053379,
+              "feature_value": "Pays-de-la-Loire",
+              "shap_value": 0.01888224296271801
+            },
+            {
+              "policy": 144013,
+              "feature_value": "Centre",
+              "shap_value": -0.02285737730562687
+            },
+            {
+              "policy": 2020015,
+              "feature_value": "Languedoc-Roussillon",
+              "shap_value": 0.02874606102705002
+            },
+            {
+              "policy": 6057203,
+              "feature_value": "Aquitaine",
+              "shap_value": -0.02471073344349861
+            },
+            {
+              "policy": 1198196,
+              "feature_value": "Centre",
+              "shap_value": -0.02428644895553589
+            },
+            {
+              "policy": 1182577,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.03074762225151062
+            },
+            {
+              "policy": 5038775,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.028513185679912567
+            },
+            {
+              "policy": 3088825,
+              "feature_value": "Centre",
+              "shap_value": -0.02285737730562687
+            },
+            {
+              "policy": 2212594,
+              "feature_value": "Poitou-Charentes",
+              "shap_value": 0.01761840470135212
+            },
+            {
+              "policy": 4147219,
+              "feature_value": "Poitou-Charentes",
+              "shap_value": 0.021041912958025932
+            },
+            {
+              "policy": 3045232,
+              "feature_value": "Centre",
+              "shap_value": -0.026892943307757378
+            },
+            {
+              "policy": 4173594,
+              "feature_value": "Pays-de-la-Loire",
+              "shap_value": 0.016354721039533615
+            },
+            {
+              "policy": 1160836,
+              "feature_value": "Pays-de-la-Loire",
+              "shap_value": 0.018646812066435814
+            },
+            {
+              "policy": 3061835,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.02172132395207882
+            },
+            {
+              "policy": 26667,
+              "feature_value": "Pays-de-la-Loire",
+              "shap_value": 0.034524835646152496
+            },
+            {
+              "policy": 32457,
+              "feature_value": "Poitou-Charentes",
+              "shap_value": 0.034524835646152496
+            },
+            {
+              "policy": 3106087,
+              "feature_value": "Nord-Pas-de-Calais",
+              "shap_value": 0.042107243090867996
+            },
+            {
+              "policy": 18004,
+              "feature_value": "Centre",
+              "shap_value": -0.029498232528567314
+            },
+            {
+              "policy": 1119718,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.027277613058686256
+            },
+            {
+              "policy": 4134168,
+              "feature_value": "Centre",
+              "shap_value": -0.02285737730562687
+            },
+            {
+              "policy": 1194335,
+              "feature_value": "Centre",
+              "shap_value": -0.029498232528567314
+            },
+            {
+              "policy": 60321,
+              "feature_value": "Picardie",
+              "shap_value": 0.034524835646152496
+            },
+            {
+              "policy": 3026561,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.024122124537825584
+            },
+            {
+              "policy": 1107555,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.03730318322777748
+            },
+            {
+              "policy": 3093270,
+              "feature_value": "Poitou-Charentes",
+              "shap_value": 0.034524835646152496
+            },
+            {
+              "policy": 3175262,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.013297494500875473
+            },
+            {
+              "policy": 3154723,
+              "feature_value": "Aquitaine",
+              "shap_value": -0.02155563421547413
+            },
+            {
+              "policy": 4168521,
+              "feature_value": "Bretagne",
+              "shap_value": -0.020225008949637413
+            },
+            {
+              "policy": 96633,
+              "feature_value": "Poitou-Charentes",
+              "shap_value": 0.014195051044225693
+            },
+            {
+              "policy": 3027168,
+              "feature_value": "Aquitaine",
+              "shap_value": -0.02471073344349861
+            },
+            {
+              "policy": 154927,
+              "feature_value": "Centre",
+              "shap_value": -0.02285737730562687
+            },
+            {
+              "policy": 2270991,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.02172132395207882
+            },
+            {
+              "policy": 3074794,
+              "feature_value": "Aquitaine",
+              "shap_value": -0.032471854239702225
+            },
+            {
+              "policy": 3248730,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.01922076754271984
+            },
+            {
+              "policy": 1192463,
+              "feature_value": "Midi-Pyrenees",
+              "shap_value": 0.026094624772667885
+            },
+            {
+              "policy": 1191611,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.024758657440543175
+            },
+            {
+              "policy": 3147259,
+              "feature_value": "Centre",
+              "shap_value": -0.01682589389383793
+            },
+            {
+              "policy": 40447,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.020251935347914696
+            },
+            {
+              "policy": 3074107,
+              "feature_value": "Aquitaine",
+              "shap_value": -0.03284083306789398
+            },
+            {
+              "policy": 2008595,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.019602444022893906
+            },
+            {
+              "policy": 3166020,
+              "feature_value": "Centre",
+              "shap_value": -0.025754708796739578
+            },
+            {
+              "policy": 93226,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.03730318322777748
+            },
+            {
+              "policy": 1180076,
+              "feature_value": "Languedoc-Roussillon",
+              "shap_value": 0.03154326230287552
+            },
+            {
+              "policy": 93992,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.02159460261464119
+            },
+            {
+              "policy": 2029212,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.03019459918141365
+            },
+            {
+              "policy": 3030488,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.02687941864132881
+            },
+            {
+              "policy": 6112727,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.020128348842263222
+            },
+            {
+              "policy": 3203754,
+              "feature_value": "Centre",
+              "shap_value": -0.03141175955533981
+            },
+            {
+              "policy": 4014687,
+              "feature_value": "Languedoc-Roussillon",
+              "shap_value": 0.03154326230287552
+            },
+            {
+              "policy": 2051414,
+              "feature_value": "Centre",
+              "shap_value": -0.033900924026966095
+            },
+            {
+              "policy": 2121464,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.02159460261464119
+            },
+            {
+              "policy": 2223135,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.03730318322777748
+            },
+            {
+              "policy": 2284223,
+              "feature_value": "Languedoc-Roussillon",
+              "shap_value": 0.026204712688922882
+            },
+            {
+              "policy": 1117287,
+              "feature_value": "Centre",
+              "shap_value": -0.01613186113536358
+            },
+            {
+              "policy": 4078302,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.028823142871260643
+            },
+            {
+              "policy": 2207974,
+              "feature_value": "Haute-Normandie",
+              "shap_value": -0.02142968960106373
+            },
+            {
+              "policy": 4043264,
+              "feature_value": "Bretagne",
+              "shap_value": -0.023188157007098198
+            },
+            {
+              "policy": 130075,
+              "feature_value": "Bretagne",
+              "shap_value": -0.016507498919963837
+            },
+            {
+              "policy": 84417,
+              "feature_value": "Pays-de-la-Loire",
+              "shap_value": 0.016354721039533615
+            },
+            {
+              "policy": 4136359,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.013865174725651741
+            },
+            {
+              "policy": 3206253,
+              "feature_value": "Centre",
+              "shap_value": -0.02285737730562687
+            },
+            {
+              "policy": 2087984,
+              "feature_value": "Pays-de-la-Loire",
+              "shap_value": 0.010628955438733101
+            },
+            {
+              "policy": 5069775,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.03177551180124283
+            },
+            {
+              "policy": 1158632,
+              "feature_value": "Centre",
+              "shap_value": -0.02117999456822872
+            },
+            {
+              "policy": 3126834,
+              "feature_value": "Centre",
+              "shap_value": -0.029498232528567314
+            },
+            {
+              "policy": 3137936,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.02119150385260582
+            },
+            {
+              "policy": 3032189,
+              "feature_value": "Midi-Pyrenees",
+              "shap_value": 0.02764561027288437
+            },
+            {
+              "policy": 6015526,
+              "feature_value": "Midi-Pyrenees",
+              "shap_value": 0.033116426318883896
+            },
+            {
+              "policy": 1056809,
+              "feature_value": "Centre",
+              "shap_value": -0.02428644895553589
+            },
+            {
+              "policy": 5030290,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.028513185679912567
+            },
+            {
+              "policy": 3000065,
+              "feature_value": "Languedoc-Roussillon",
+              "shap_value": 0.026586391031742096
+            },
+            {
+              "policy": 4135061,
+              "feature_value": "Auvergne",
+              "shap_value": -0.02251674048602581
+            },
+            {
+              "policy": 6088264,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.013369441032409668
+            },
+            {
+              "policy": 4131997,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.012330248951911926
+            },
+            {
+              "policy": 127530,
+              "feature_value": "Centre",
+              "shap_value": -0.03284083306789398
+            },
+            {
+              "policy": 2199408,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.03074762225151062
+            },
+            {
+              "policy": 1081918,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.02159460261464119
+            },
+            {
+              "policy": 6060089,
+              "feature_value": "Bretagne",
+              "shap_value": -0.021759087219834328
+            },
+            {
+              "policy": 3014715,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.029942255467176437
+            },
+            {
+              "policy": 1192542,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.019960837438702583
+            },
+            {
+              "policy": 4181684,
+              "feature_value": "Centre",
+              "shap_value": -0.02428644895553589
+            },
+            {
+              "policy": 2186447,
+              "feature_value": "Centre",
+              "shap_value": -0.02285737730562687
+            },
+            {
+              "policy": 3203470,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.033058833330869675
+            },
+            {
+              "policy": 1160682,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.013865174725651741
+            },
+            {
+              "policy": 1140065,
+              "feature_value": "Pays-de-la-Loire",
+              "shap_value": 0.016481440514326096
+            },
+            {
+              "policy": 3040908,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.021976279094815254
+            },
+            {
+              "policy": 3064035,
+              "feature_value": "Haute-Normandie",
+              "shap_value": -0.023250997066497803
+            },
+            {
+              "policy": 2220613,
+              "feature_value": "Languedoc-Roussillon",
+              "shap_value": 0.02404504083096981
+            },
+            {
+              "policy": 4168922,
+              "feature_value": "Centre",
+              "shap_value": -0.032471854239702225
+            },
+            {
+              "policy": 4119809,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.03976472094655037
+            },
+            {
+              "policy": 3086456,
+              "feature_value": "Centre",
+              "shap_value": -0.029498232528567314
+            },
+            {
+              "policy": 4152394,
+              "feature_value": "Nord-Pas-de-Calais",
+              "shap_value": 0.036476004868745804
+            },
+            {
+              "policy": 1168000,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.03014063835144043
+            },
+            {
+              "policy": 6105240,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.029942255467176437
+            },
+            {
+              "policy": 3006380,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.0274009071290493
+            },
+            {
+              "policy": 62471,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.024122124537825584
+            },
+            {
+              "policy": 168136,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.03514350950717926
+            },
+            {
+              "policy": 1112413,
+              "feature_value": "Centre",
+              "shap_value": -0.01668999344110489
+            },
+            {
+              "policy": 29163,
+              "feature_value": "Centre",
+              "shap_value": -0.033900924026966095
+            },
+            {
+              "policy": 98004,
+              "feature_value": "Centre",
+              "shap_value": -0.021041350439190865
+            },
+            {
+              "policy": 46202,
+              "feature_value": "Lorraine",
+              "shap_value": 0.028809048235416412
+            },
+            {
+              "policy": 1145886,
+              "feature_value": "Pays-de-la-Loire",
+              "shap_value": 0.01472095400094986
+            },
+            {
+              "policy": 3213444,
+              "feature_value": "Midi-Pyrenees",
+              "shap_value": 0.030442815274000168
+            },
+            {
+              "policy": 1186748,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.03566941246390343
+            },
+            {
+              "policy": 4181947,
+              "feature_value": "Midi-Pyrenees",
+              "shap_value": 0.03539930656552315
+            },
+            {
+              "policy": 5025497,
+              "feature_value": "Limousin",
+              "shap_value": 0.02980528026819229
+            },
+            {
+              "policy": 4128774,
+              "feature_value": "Bretagne",
+              "shap_value": -0.03131825476884842
+            },
+            {
+              "policy": 1143730,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.024122124537825584
+            },
+            {
+              "policy": 4134967,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.028412234038114548
+            },
+            {
+              "policy": 2041945,
+              "feature_value": "Midi-Pyrenees",
+              "shap_value": 0.02980528026819229
+            },
+            {
+              "policy": 3136792,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.030046001076698303
+            },
+            {
+              "policy": 1043923,
+              "feature_value": "Centre",
+              "shap_value": -0.02285737730562687
+            },
+            {
+              "policy": 6059833,
+              "feature_value": "Languedoc-Roussillon",
+              "shap_value": 0.031378429383039474
+            },
+            {
+              "policy": 2190548,
+              "feature_value": "Centre",
+              "shap_value": -0.029122594743967056
+            },
+            {
+              "policy": 5081325,
+              "feature_value": "Aquitaine",
+              "shap_value": -0.032471854239702225
+            },
+            {
+              "policy": 2230384,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.03976472094655037
+            },
+            {
+              "policy": 2012972,
+              "feature_value": "Nord-Pas-de-Calais",
+              "shap_value": 0.034019242972135544
+            },
+            {
+              "policy": 3182085,
+              "feature_value": "Bretagne",
+              "shap_value": -0.02285737730562687
+            },
+            {
+              "policy": 72663,
+              "feature_value": "Centre",
+              "shap_value": -0.02117999456822872
+            },
+            {
+              "policy": 4176860,
+              "feature_value": "Centre",
+              "shap_value": -0.03239067271351814
+            },
+            {
+              "policy": 3081392,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.019434932619333267
+            },
+            {
+              "policy": 4044864,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.028513185679912567
+            },
+            {
+              "policy": 3145548,
+              "feature_value": "Centre",
+              "shap_value": -0.02285737730562687
+            },
+            {
+              "policy": 3145986,
+              "feature_value": "Centre",
+              "shap_value": -0.032471854239702225
+            },
+            {
+              "policy": 4167857,
+              "feature_value": "Aquitaine",
+              "shap_value": -0.02285737730562687
+            },
+            {
+              "policy": 3159904,
+              "feature_value": "Bretagne",
+              "shap_value": -0.02428644895553589
+            },
+            {
+              "policy": 1198142,
+              "feature_value": "Nord-Pas-de-Calais",
+              "shap_value": 0.031477898359298706
+            },
+            {
+              "policy": 3173139,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.03300217166543007
+            },
+            {
+              "policy": 2022958,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.024135949090123177
+            },
+            {
+              "policy": 2015253,
+              "feature_value": "Haute-Normandie",
+              "shap_value": -0.025356516242027283
+            },
+            {
+              "policy": 2099798,
+              "feature_value": "Pays-de-la-Loire",
+              "shap_value": 0.02421962097287178
+            },
+            {
+              "policy": 2259624,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.014365486800670624
+            },
+            {
+              "policy": 158439,
+              "feature_value": "Centre",
+              "shap_value": -0.021667679771780968
+            },
+            {
+              "policy": 6098280,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.03132921829819679
+            },
+            {
+              "policy": 2265708,
+              "feature_value": "Haute-Normandie",
+              "shap_value": -0.015790443867444992
+            },
+            {
+              "policy": 2100419,
+              "feature_value": "Centre",
+              "shap_value": -0.020665712654590607
+            },
+            {
+              "policy": 1157199,
+              "feature_value": "Centre",
+              "shap_value": -0.018897676840424538
+            },
+            {
+              "policy": 1160510,
+              "feature_value": "Basse-Normandie",
+              "shap_value": -0.01682589389383793
+            },
+            {
+              "policy": 4120392,
+              "feature_value": "Pays-de-la-Loire",
+              "shap_value": 0.021041912958025932
+            },
+            {
+              "policy": 3165105,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.02250218391418457
+            },
+            {
+              "policy": 2271013,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.026281796395778656
+            },
+            {
+              "policy": 3161301,
+              "feature_value": "Centre",
+              "shap_value": -0.016739537939429283
+            },
+            {
+              "policy": 2113513,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.022825269028544426
+            },
+            {
+              "policy": 2287050,
+              "feature_value": "Midi-Pyrenees",
+              "shap_value": 0.031723879277706146
+            },
+            {
+              "policy": 4150126,
+              "feature_value": "Centre",
+              "shap_value": -0.02285737730562687
+            },
+            {
+              "policy": 1012888,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.024135949090123177
+            },
+            {
+              "policy": 2091212,
+              "feature_value": "Aquitaine",
+              "shap_value": -0.03284083306789398
+            },
+            {
+              "policy": 2101034,
+              "feature_value": "Centre",
+              "shap_value": -0.022104239091277122
+            },
+            {
+              "policy": 5082264,
+              "feature_value": "Bourgogne",
+              "shap_value": -0.024162128567695618
+            },
+            {
+              "policy": 4005890,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.02460370399057865
+            },
+            {
+              "policy": 5101657,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.028513185679912567
+            },
+            {
+              "policy": 4138232,
+              "feature_value": "Centre",
+              "shap_value": -0.02428644895553589
+            },
+            {
+              "policy": 3150737,
+              "feature_value": "Centre",
+              "shap_value": -0.02117999456822872
+            },
+            {
+              "policy": 1099905,
+              "feature_value": "Nord-Pas-de-Calais",
+              "shap_value": 0.031477898359298706
+            },
+            {
+              "policy": 1110003,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.024122124537825584
+            },
+            {
+              "policy": 2156263,
+              "feature_value": "Rhone-Alpes",
+              "shap_value": 0.024122124537825584
+            },
+            {
+              "policy": 2060699,
+              "feature_value": "Provence-Alpes-Cotes-D'Azur",
+              "shap_value": 0.02159460261464119
+            },
+            {
+              "policy": 1106921,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.030046001076698303
+            },
+            {
+              "policy": 3103078,
+              "feature_value": "Centre",
+              "shap_value": -0.02155563421547413
+            },
+            {
+              "policy": 106989,
+              "feature_value": "Ile-de-France",
+              "shap_value": 0.02597183734178543
+            }
+          ]
+        }
+      ]
+    },
+    "individual_case": {
+      "available_cases": 3,
+      "values": [
+        {
+          "case": "low_risk",
+          "policy": 6059833,
+          "base_value": -6.0418314933776855,
+          "contributions": [
+            {
+              "feature": "VehPower",
+              "shap_value": 0.0001067635603249073
+            },
+            {
+              "feature": "VehAge",
+              "shap_value": 0.014182294718921185
+            },
+            {
+              "feature": "DrivAge",
+              "shap_value": 0.0107268700376153
+            },
+            {
+              "feature": "BonusMalus",
+              "shap_value": -0.06280597299337387
+            },
+            {
+              "feature": "Density",
+              "shap_value": 0.06541388481855392
+            },
+            {
+              "feature": "VehBrand",
+              "shap_value": -0.004681393504142761
+            },
+            {
+              "feature": "VehGas",
+              "shap_value": 0.0
+            },
+            {
+              "feature": "Area",
+              "shap_value": 0.0
+            },
+            {
+              "feature": "Region",
+              "shap_value": 0.031378429383039474
+            },
+            {
+              "feature": "LogDensity",
+              "shap_value": 0.01619795709848404
+            },
+            {
+              "feature": "BonusMalusCapped",
+              "shap_value": -0.021663177758455276
+            }
+          ],
+          "predicted_frequency": 0.00249622462629072
+        },
+        {
+          "case": "median_risk",
+          "policy": 3159904,
+          "base_value": -6.0418314933776855,
+          "contributions": [
+            {
+              "feature": "VehPower",
+              "shap_value": -0.0012649097479879856
+            },
+            {
+              "feature": "VehAge",
+              "shap_value": 0.00729399686679244
+            },
+            {
+              "feature": "DrivAge",
+              "shap_value": -0.017120834439992905
+            },
+            {
+              "feature": "BonusMalus",
+              "shap_value": -0.05519124120473862
+            },
+            {
+              "feature": "Density",
+              "shap_value": -0.14090506732463837
+            },
+            {
+              "feature": "VehBrand",
+              "shap_value": -0.2135634571313858
+            },
+            {
+              "feature": "VehGas",
+              "shap_value": 0.0
+            },
+            {
+              "feature": "Area",
+              "shap_value": 0.0
+            },
+            {
+              "feature": "Region",
+              "shap_value": -0.02428644895553589
+            },
+            {
+              "feature": "LogDensity",
+              "shap_value": -0.034006550908088684
+            },
+            {
+              "feature": "BonusMalusCapped",
+              "shap_value": -0.01672615483403206
+            }
+          ],
+          "predicted_frequency": 0.001447956305755253
+        },
+        {
+          "case": "high_risk",
+          "policy": 2103932,
+          "base_value": -6.0418314933776855,
+          "contributions": [
+            {
+              "feature": "VehPower",
+              "shap_value": 0.014204228296875954
+            },
+            {
+              "feature": "VehAge",
+              "shap_value": -0.058996547013521194
+            },
+            {
+              "feature": "DrivAge",
+              "shap_value": 0.0010716053657233715
+            },
+            {
+              "feature": "BonusMalus",
+              "shap_value": 0.30172738432884216
+            },
+            {
+              "feature": "Density",
+              "shap_value": 0.08615462481975555
+            },
+            {
+              "feature": "VehBrand",
+              "shap_value": 0.28329044580459595
+            },
+            {
+              "feature": "VehGas",
+              "shap_value": 0.0
+            },
+            {
+              "feature": "Area",
+              "shap_value": 0.0
+            },
+            {
+              "feature": "Region",
+              "shap_value": 0.025523098185658455
+            },
+            {
+              "feature": "LogDensity",
+              "shap_value": 0.02217761054635048
+            },
+            {
+              "feature": "BonusMalusCapped",
+              "shap_value": 0.09214126318693161
+            }
+          ],
+          "predicted_frequency": 0.005120322877760388
+        }
+      ]
+    },
+    "glm_directional_comparison": {
+      "values": null
+    }
+  },
+  "limitations_from_source": [
+    "SHAP feature credit can be imperfect where predictors are correlated.",
+    "The 1,000-row sample means rankings can shift on the full freMTPL dataset.",
+    "The source report notes limitations of label-encoded categoricals in the GLM comparison."
+  ]
+}

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Tariff Lab — Chapter 3: SHAP Explainability">
+<title>Tariff Lab / 03 — SHAP</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" onload="window.renderMathInElement && renderMathInElement(document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false})"></script>
+</head>
+<body>
+<div class="shap-data-status" id="shap-data-status">SHAP DATA · LOADED</div>
+<nav class="master-nav" aria-label="Tariff Lab chapters">
+  <a class="master-brand" href="../../">TARIFF LAB</a>
+  <div class="master-links">
+    <a data-chapter="01" href="../01-glm/">01 · GLM</a>
+    <a data-chapter="02" href="../02-xgboost/">02 · XGBOOST</a>
+    <a data-chapter="03" href="../03-shap/">03 · SHAP</a>
+    <a data-chapter="04" href="../04-business-test/">04 · BUSINESS TEST</a>
+  </div>
+</nav>
+
+<div class="noise" aria-hidden="true"></div>
+<header class="topbar">
+  <div class="brand">TARIFF LAB<span>/03</span></div>
+  <div class="chapter">THE EXPLAINABLE WORLD — SHAP</div>
+  <div class="progress-track"><span id="progress-bar"></span></div>
+</header>
+
+<main style="padding-top:118px">
+<section class="hero scene-section">
+  <div class="hero-grid">
+    <div class="hero-copy scene-reveal">
+      <p class="eyebrow">CHAPTER 03 · SHAP</p>
+      <h1>Now the model has to explain itself.</h1>
+      <p class="lede">XGBoost can create a different pure-premium surface. SHAP asks the next question: <em>WHY?</em></p>
+      <div class="hero-signal"><span class="pulse-dot"></span><span>EXPLAINABILITY LAYER · TREEEXPLAINER</span></div>
+      <div class="scroll-cue"><span>SCROLL TO OPEN THE MODEL</span><i></i></div>
+    </div>
+    <aside class="hero-card scene-reveal">
+      <div class="card-kicker">EXPLANATION STACK</div>
+      <div class="stack">
+        <div class="stack-row active"><span>01</span><strong>Global importance</strong><small>What matters?</small></div>
+        <div class="stack-row"><span>02</span><strong>Dependence</strong><small>How does it move?</small></div>
+        <div class="stack-row"><span>03</span><strong>Waterfall</strong><small>Why this prediction?</small></div>
+      </div>
+      <div class="card-note">The explanation layer is bound to the actual Phase 4 SHAP export contained in this chapter.</div>
+    </aside>
+  </div>
+</section>
+
+<section class="scrolly-scene global-story">
+<div class="sticky-frame">
+  <div class="scene-index">01 / 03</div>
+  <div class="copy scene-reveal">
+    <p class="eyebrow">GLOBAL VIEW</p>
+    <h2>What drives the model?</h2>
+    <p class="body-copy">The first level is global: Which variables contribute most strongly to the XGBoost prediction of claim frequency?</p>
+    <div class="method-chip">Mean |SHAP| · global feature importance</div>
+    <p class="insight">These bars use the exported SHAP results. No demo values or invented rankings are used.</p>
+  </div>
+  <div class="feature-stage">
+    <div id="feature-bars" class="feature-bars">
+      <div class="pending-state">
+        <span>DATA CONTRACT · READY</span>
+        <strong>Actual Phase 4 SHAP output</strong>
+        <small>Top 5 features + Mean |SHAP|</small>
+      </div>
+      <div id="feature-bars-chart" hidden></div>
+    </div>
+  </div>
+  <div class="scene-scroll-hint">Keep scrolling</div>
+</div>
+</section>
+
+<section class="scrolly-scene dependence-story">
+<div class="sticky-frame">
+  <div class="scene-index">02 / 03</div>
+  <div class="copy scene-reveal">
+    <p class="eyebrow">LOCAL SHAPE</p>
+    <h2>Importance is not direction.</h2>
+    <p class="body-copy">A SHAP value quantifies a feature’s contribution to the prediction of a single policy relative to the baseline. The SHAP dependence structure shows how this contribution changes across the feature's range of values. It describes model association, not causality.</p>
+    <div class="dependence-readout">
+      <span>SELECTED FEATURE</span>
+      <strong id="dependence-readout-value">Beeswarm</strong>
+    </div>
+    <div class="method-chip">SHAP dependence · top-5 feature set</div>
+    <div id="dependence-pills" class="case-tabs" hidden></div>
+  </div>
+  <div class="dependence-stage">
+    <div class="axis axis-x"></div><div class="axis axis-y"></div>
+    <div class="curve-placeholder">
+      <span>DEPENDENCE PLOT</span>
+      <strong>Actual SHAP values</strong>
+      <small>Five exported top-feature views</small>
+    </div>
+    <div id="dependence-chart" hidden></div>
+  </div>
+  <div class="scene-scroll-hint">Reveal the shape</div>
+</div>
+</section>
+
+<section class="scrolly-scene waterfall-story">
+<div class="sticky-frame">
+  <div class="scene-index">03 / 03</div>
+  <div class="waterfall-copy scene-reveal">
+    <p class="eyebrow">ONE PREDICTION</p>
+    <h2>One prediction.<br>Explained.</h2>
+    <p class="body-copy">The waterfall plot decomposes one XGBoost prediction into feature contributions. Starting from the baseline, each contribution moves the prediction on the model's log-frequency scale.</p>
+    <div class="case-tabs">
+      <button class="case-tab active" data-case="median_risk">Lower predicted frequency</button>
+      <button class="case-tab" data-case="low_risk">Middle predicted frequency</button>
+      <button class="case-tab" data-case="high_risk">Higher predicted frequency</button>
+    </div>
+    <p class="insight">The Phase 4 export contains three representative cases. Their labels are assigned here from the reconstructed predicted frequency.</p>
+  </div>
+  <div class="waterfall-stage">
+    <div class="waterfall-placeholder">
+      <div class="waterfall-base"></div>
+      <div class="waterfall-note">
+        <span>WATERFALL</span>
+        <strong>Actual individual SHAP output</strong>
+        <small>Three representative cases</small>
+      </div>
+    </div>
+    <div id="waterfall-chart" hidden></div>
+  </div>
+  <div class="scene-scroll-hint">Explain the case</div>
+</div>
+</section>
+
+<section class="transition-scene">
+<div class="transition-inner">
+  <p class="eyebrow">END OF CHAPTER 03</p>
+  <div class="transition-count">03 <span>→</span> 04</div>
+  <h2>Now we can see why the model makes the prediction.</h2>
+  <p class="lede">But does this added complexity really warrant being included in the rate?</p>
+  <div class="transition-line"></div>
+  <!-- Hier ist die Verlinkung: #D9E825-->
+  <p class="lede">
+    <a data-chapter="04" href="../04-business-test/" style="color: #D9E825 !important; text-decoration: none;">Chapter 04 · BUSINESS TEST</a>
+  </p>
+  <!--
+  <p class="next">Chapter 04 · Lorenz · Gini · Lift</p>
+  -->
+</div>
+</section>
+</main>
+
+<footer class="footer"><span>Portfolio project · actuarial tariff modeling</span><span>MarksQuant GitHub Pages · Chapter 03</span></footer>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+<script src="js/app.js" type="module"></script>
+<script>document.querySelectorAll('.master-links a[data-chapter]').forEach(a=>{if(a.dataset.chapter==='03')a.classList.add('current')});</script></body>
+</html>

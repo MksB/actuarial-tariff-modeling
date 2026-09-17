@@ -1,0 +1,10 @@
+{
+  "mode": "two_layer_scrollytelling",
+  "sequence": [
+    "01 Prediction ist nicht dasselbe wie Leistung",
+    "02 Kann das Modell Risiken wirklich sortieren?",
+    "03 Komplexität hat einen Preis"
+  ],
+  "layer_order": "popular_science_then_mathematical",
+  "final_message": "Ein Tarifmodell ist nicht erfolgreich, weil es kompliziert ist. Es ist erfolgreich, wenn es bessere Entscheidungen ermöglicht."
+}

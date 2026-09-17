@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tariff Lab · Chapter 4 — Der Business-Test</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js" onload="window.renderMathInElement && renderMathInElement(document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false})"></script>
+</head>
+<body>
+<div class="noise" aria-hidden="true"></div>
+<nav class="master-nav" aria-label="Tariff Lab chapters">
+  <a class="master-brand" href="../../">TARIFF LAB</a>
+  <div class="master-links">
+    <a data-chapter="01" href="../01-glm/">01 · GLM</a>
+    <a data-chapter="02" href="../02-xgboost/">02 · XGBOOST</a>
+    <a data-chapter="03" href="../03-shap/">03 · SHAP</a>
+    <a data-chapter="04" href="../04-business-test/">04 · BUSINESS TEST</a>
+  </div>
+</nav>
+
+<header class="topbar">
+  <div class="brand">TARIFF LAB<span>/04</span></div>
+  <div class="chapter">THE BUSINESS TEST</div>
+  <div class="progress-track" aria-hidden="true"><span id="progress"></span></div>
+</header>
+
+<header class="hero" style="padding-top:118px">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">CHAPTER 04 · BUSINESS TEST</div>
+    <h1>More flexibility.<br><span>But is it better?</span></h1>
+    <p class="lead">Chapter 1 introduced the classical frequency-severity decomposition. <br>Chapter 2 showed how XGBoost changes the pure-premium surface. <br>Chapter 3 made the model explainable. </p>
+    <p class="lead">Here we evaluate the <strong>Phase 5 comparison models on a <br>held-out test set.</strong></p>
+    <div class="scroll-cue">SCROLL TO TEST ↓</div>
+  </div>
+</header>
+
+<section class="scene" id="s1">
+<div class="sticky">
+<div class="kicker">01 · PERFORMANCE</div>
+<h2>Flexibility does not automatically translate into better predictive performance.</h2>
+
+<div class="two">
+<article class="card copy">
+  <div class="popular">
+    <p>Greater flexibility does not automatically translate into better predictive performance.</p> <p class="muted">We therefore start with <strong>deviance:</strong> a likelihood-based measure of how well the model describes the observed claim experience.</p>
+  </div>
+  <div class="math">
+    <div class="math-label">MATHEMATICAL FRAMEWORK</div>
+    <div class="formula">\[D_{\mathrm{P}} = 2\sum_i w_i\left[y_i\log\left(\frac{y_i}{\hat y_i}\right)-\left(y_i-\hat y_i\right)\right]\]</div>
+    <p>The smaller the Poisson deviance, the better the model describes the observed claim counts under the Poisson likelihood, taking exposure into account.</p>
+    <div class="formula">\[D_{\Gamma} = 2\sum_i w_i\left[\log\left(\frac{\hat y_i}{y_i}\right)+\frac{y_i}{\hat y_i}-1\right]\]</div>
+    <p class="small">The analogous Gamma deviance measures how well the model describes observed claim severities.</p>
+    <p class="small">For frequency, \(w_i\) reflects exposure; for severity, \(w_i\) reflects the number of claims represented by the observation. </p>
+  </div>
+</article>
+<article class="card chart-card">
+  <div class="chart-head"><span>Relative Deviance</span><small>1.000 = GLM · held-out test set</small></div>
+  <div class="tabs"><button class="active" data-kind="frequency">frequency</button><button data-kind="severity">severity</button></div>
+  <div id="dev" class="plot"></div>
+</article>
+</div>
+</div>
+</section>
+
+<section class="scene" id="s2">
+<div class="sticky">
+<div class="kicker">02 · DISCRIMINATION</div>
+<h2>Can the model really identify risks?</h2>
+<div class="two">
+<article class="card copy">
+  <div class="popular">
+    <p>When it comes to pricing, it's not enough to get it right on average.</p>
+    
+    <p class="muted">We want to identify contracts with higher expected claim risk <strong>as early as possible in the ranking.</strong></p>
+    
+    <div class="callout"><strong id="ch4-best-gini">—</strong><span id="ch4-best-gini-label">Highest frequency Gini on the test set.</span>
+    </div>
+    
+  </div>
+  <div class="math">
+    <div class="math-label">MATHEMATICAL FRAMEWORK</div>
+    <div class="formula">\[G = 1 - 2\int_0^1 L(p)\,\mathrm{d}p\]</div>
+    <p>The higher the Gini coefficient, the more clearly the model distinguishes between contracts with lower and higher risk.</p>
+    <div class="formula">\[\operatorname{Lift}_{10\%} = \frac{\mathrm{Risk}_{\mathrm{top\ 10\%}}}{\mathrm{Risk}_{\mathrm{portfolio}}}\]</div>
+    <p class="small">A lift of 1.00 is the portfolio average. The current audited export does not contain the point-level lift data needed to report a Top-10% value.</p>
+  </div>
+</article>
+<article class="card chart-card">
+  <div class="chart-head"><span>Gini · Discrimination</span><small>higher = better</small></div>
+  <div class="tabs"><button class="active" data-kind="frequency">frequency</button><button data-kind="severity">Claim Amount</button></div>
+  <div id="gini" class="plot"></div>
+  <div class="notice">Test-set Gini values come from the audited master comparison. Negative severity Gini values indicate inverse ranking under the implemented Lorenz-Gini convention. Exact Lorenz/lift point arrays are not available, so no synthetic curve is shown.</div><p class="small">Method note: the Phase 5 comparison GLM uses a rate target with exposure weights and is not the same fitting implementation as the canonical Phase 1 Statsmodels/BIC GLM in Chapter 1.</p>
+</article>
+</div>
+</div>
+</section>
+
+<section class="scene" id="s3">
+<div class="sticky">
+<div class="kicker">03 · DECISION</div>
+<h2>Complexity comes at a price.</h2>
+<div class="two">
+<article class="card copy">
+  <div class="popular">
+    <p><strong>GLM</strong> is easier to read. ML is more flexible. Both statements can be true at the same time.</p>
+    <p class="muted">Model selection must therefore take into account statistical quality, calibration, interpretability, and operational overhead collectively.</p>
+    <div class="rule"><span>NOT</span> „Which model is the most complex?“</div>
+    <div class="rule"><span>RATHER</span> „What additional complexity improves decision-making and based on which metrics?“</div>
+  </div>
+  <div class="math">
+    <div class="math-label">DECISION-MAKING LOGIC</div>
+    <div class="formula">\[\mathrm{Benefits} \approx \mathrm{better\ Risk Classification}+\mathrm{better\ Calibration}\]</div>
+    <div class="formula">\[\mathrm{Costs} \approx \mathrm{Complexity}+\mathrm{ExplanatoryEffort}+\mathrm{Operation}\]</div>
+  </div>
+</article>
+<article class="card board">
+  <div class="row head"><span>Modell</span><span>Freq. Devianz*</span><span>Freq. Gini</span><span>Readability</span></div>
+  <div class="row"><span>GLM</span><b id="freq-dev-glm">—</b><b id="freq-gini-glm">—</b><em>hoch</em></div>
+  <div class="row"><span>LightGBM</span><b id="freq-dev-lgbm">—</b><b id="freq-gini-lgbm">—</b><em>niedrig</em></div>
+  <div class="row"><span>XGBoost</span><b id="freq-dev-xgb">—</b><b id="freq-gini-xgb">—</b><em>niedrig</em></div>
+  <div class="audit-metrics"><div><span>GLM median pure premium</span><b id="ch4-glm-median">—</b></div><div><span>XGB median pure premium</span><b id="ch4-xgb-median">—</b></div></div>
+        <div class="audit"><small>PORTFOLIO-AUDIT · 1.000 POLICIES</small><strong>64%</strong><span>the XGBoost Pure Premium models outperform the GLM Pure Premium.</span><span><b>3,2%</b> are within ±10% of the GLM Pure Premium.</span></div>
+</article>
+</div>
+<div class="verdict"><div class="math-label">THE RESULT</div><p>Greater complexity changes how risks are categorized, but it does not automatically<br> improve every metric.</p><strong>On this test set, XGBoost has the higher Frequency-Gini; the GLM has the lower deviance.</strong></div>
+</div>
+</section>
+
+<section class="transition-scene">
+  <div class="transition-inner">
+    <p class="eyebrow">END OF CHAPTER 04</p>
+    <div class="transition-count">04 <span>✓</span></div>
+	
+    <h2>The decision remains more important than the model.</h2>
+	
+    <p class="lede">The future of actuarial rate modeling lies not in replacing traditional GLMs with machine learning, <br>but in intelligently combining both approaches.</p>
+    <!--
+    <p class="lede">Tarifmodelle müssen nicht maximal komplex sein. Sie müssen belastbare Entscheidungen ermöglichen.</p>
+    -->
+    <div class="transition-line"></div>
+    <p class="next"><a href="../../">Back to the Portfolio Overview</a></p>
+  </div>
+</section>
+<footer class="footer"><span>Portfolio project · actuarial tariff modeling</span><span>MarksQuant GitHub Pages · Chapter 04</span></footer>
+
+<script src="js/app.js"></script>
+<script>document.querySelectorAll('.master-links a[data-chapter]').forEach(a=>{if(a.dataset.chapter==='04')a.classList.add('current')});</script></body>
+</html>
